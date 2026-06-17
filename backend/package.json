@@ -1,0 +1,28 @@
+{
+  "name": "3v-backend",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@nestjs/common": "*",
+    "@nestjs/core": "*",
+    "@nestjs/platform-express": "*",
+    "class-transformer": "*",
+    "class-validator": "*",
+    "pg": "*",
+    "reflect-metadata": "*",
+    "rxjs": "*"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "*",
+    "@types/node": "*",
+    "eslint": "*",
+    "typescript": "*",
+    "ts-node": "*"
+  }
+}
