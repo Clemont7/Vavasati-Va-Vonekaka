@@ -9,19 +9,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "i18next": "*",
-    "lucide-react": "*",
-    "react": "*",
-    "react-dom": "*",
-    "react-i18next": "*",
-    "react-router-dom": "*"
+    "i18next": "^23.16.8",
+    "lucide-react": "^0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.0",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "@vitejs/plugin-react": "*",
-    "eslint": "*",
-    "typescript": "*",
-    "vite": "*"
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.18.0",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.11"
   }
 }

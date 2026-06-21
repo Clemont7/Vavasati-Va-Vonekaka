@@ -1,9 +1,10 @@
 export const siteContent = {
   name: 'Vavasati Va Vonekaka - 3V',
-  slogan: 'Onde levantar Mulheres ? Miss?o, o Sucesso ? Inevit?vel!',
-  mission: 'Estabelecer uma rede de apoio inclusiva e estrat?gica que ofere?a informa??o, forma??o e direcionamento vocacional.',
-  vision: 'Formar uma gera??o de mulheres mo?ambicanas que lideram e servem a sociedade com prop?sito, excel?ncia e autonomia econ?mica.',
-  values: ['Mutualismo', 'Excel?ncia', 'Irmandade'],
-  audience: 'Adolescentes e jovens mo?ambicanas dos 15 aos 30 anos.',
-  channels: ['Presen?a digital', 'Eventos presenciais', 'A??es beneficentes'],
+  slogan: 'Mulheres que Resplandecem',
+  mission:
+    'Estabelecer uma rede de apoio inclusiva e estratégica que ofereça informação, formação e direcionamento vocacional, promovendo o crescimento emocional, académico, profissional e empresarial das adolescentes e jovens moçambicanas.',
+  vision:
+    'Despertar, capacitar e posicionar adolescentes e jovens moçambicanas para viverem, liderarem e servirem a sociedade com propósito, excelência profissional e académica, bem como autonomia económica e influência social.',
+  values: ['Mutualismo', 'Excelência', 'Irmandade'],
+  audience: 'Adolescentes e jovens moçambicanas dos 15 aos 30 anos.',
 };

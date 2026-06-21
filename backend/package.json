@@ -9,20 +9,20 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@nestjs/common": "*",
-    "@nestjs/core": "*",
-    "@nestjs/platform-express": "*",
-    "class-transformer": "*",
-    "class-validator": "*",
-    "pg": "*",
-    "reflect-metadata": "*",
-    "rxjs": "*"
+    "@nestjs/common": "^11.1.27",
+    "@nestjs/core": "^11.1.27",
+    "@nestjs/platform-express": "^11.1.27",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
-    "@nestjs/cli": "*",
-    "@types/node": "*",
-    "eslint": "*",
-    "typescript": "*",
-    "ts-node": "*"
+    "@nestjs/cli": "^11.0.23",
+    "@types/node": "^22.10.7",
+    "eslint": "^9.18.0",
+    "typescript": "^5.7.3",
+    "ts-node": "^10.9.2"
   }
 }
