@@ -1,20 +1,47 @@
-* {
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary — brand book PDF (oficial) */
+    --color-primary-gold: #d4af37;
+    --color-primary-terracotta: #a8645c;
+    --color-primary-dark-brown: #3d1c02;
+    --color-primary-beige: #e8e1d3;
+
+    /* Secondary — extensão complementar */
+    --color-burgundy: #5a0d1b;
+    --color-terracotta: #8a4b32;
+    --color-bronze: #b08a57;
+    --color-beige: #f5f1e8;
+    --color-dark-brown: #3b2618;
+    --color-ivory: #faf8f4;
+    --color-sand: #eadcc8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 bg-primary-beige font-body text-primary-dark-brown antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.app {
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-}
-
-.logo {
-  width: 100%;
-  max-width: 360px;
-  height: auto;
+@layer components {
+  .container-max {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+  }
 }
