@@ -22,7 +22,7 @@
     "@nestjs/cli": "*",
     "@types/node": "*",
     "eslint": "*",
-    "typescript": "*",
+    "typescript": "5.9.3",
     "ts-node": "*"
   }
 }
