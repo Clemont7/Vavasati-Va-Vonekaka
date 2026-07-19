@@ -4,9 +4,9 @@ import Footer from '@/components/layout/Footer';
 
 export default function SiteLayout() {
   return (
-    <div>
+    <div className="flex min-h-screen flex-col bg-primary-beige">
       <Header />
-      <main className="container" style={{ padding: '2rem 0' }}>
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />
