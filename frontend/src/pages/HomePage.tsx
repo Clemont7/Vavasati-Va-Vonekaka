@@ -11,14 +11,6 @@ import SectionDivider from '@/components/sections/SectionDivider';
 
 export default function HomePage() {
   return (
-<<<<<<< HEAD
-    <section>
-      <h1 style={{ marginTop: 0 }}>Página Inicial</h1>
-      <p style={{ color: 'var(--muted)', lineHeight: 1.6 }}>
-        Espaço de apresentação institucional, chamada para ação e acesso rápido às principais secções.
-      </p>
-    </section>
-=======
     <>
       <HeroSection />
       <SectionDivider />
@@ -46,6 +38,5 @@ export default function HomePage() {
 
       <MembershipCTA />
     </>
->>>>>>> ca21de225499e579bca4a6549564801cee8dcc3e
   );
 }
