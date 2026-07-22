@@ -4,28 +4,20 @@
 
 @layer base {
   :root {
-    /* Primary — brand book PDF (oficial) */
-    --color-primary-gold: #d4af37;
-    --color-primary-terracotta: #a8645c;
-    --color-primary-dark-brown: #3d1c02;
-    --color-primary-beige: #e8e1d3;
-
-    /* Secondary — extensão complementar */
     --color-burgundy: #5a0d1b;
     --color-terracotta: #8a4b32;
     --color-bronze: #b08a57;
-    --color-beige: #f5f1e8;
-    --color-dark-brown: #3b2618;
-    --color-ivory: #faf8f4;
-    --color-sand: #eadcc8;
+    --color-cream: #fff9f5;
+    --header-h: 4.5rem;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
-    @apply m-0 bg-primary-beige font-body text-primary-dark-brown antialiased;
+    @apply m-0 overflow-x-hidden bg-cream font-body text-stone-800 antialiased;
   }
 
   h1,
@@ -36,12 +28,104 @@
   h6 {
     @apply font-display;
   }
+
+  /* Mobile: sem barra física — só scroll por toque */
+  @media (max-width: 767px) {
+    html,
+    body,
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  /* Desktop: scrollbar castanha elegante */
+  @media (min-width: 768px) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-bronze) transparent;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 0;
+    }
+
+    html::-webkit-scrollbar-track,
+    body::-webkit-scrollbar-track,
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb,
+    body::-webkit-scrollbar-thumb,
+    *::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        var(--color-bronze) 0%,
+        var(--color-terracotta) 100%
+      );
+      border-radius: 999px;
+      border: 2px solid var(--color-cream);
+      background-clip: padding-box;
+    }
+
+    html::-webkit-scrollbar-thumb:hover,
+    body::-webkit-scrollbar-thumb:hover,
+    *::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        180deg,
+        #c49a68 0%,
+        var(--color-terracotta) 100%
+      );
+      border: 2px solid var(--color-cream);
+      background-clip: padding-box;
+    }
+
+    html::-webkit-scrollbar-corner,
+    body::-webkit-scrollbar-corner,
+    *::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+  }
 }
 
 @layer components {
   .container-max {
     margin-inline: auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 80rem;
+  }
+
+  .section-screen {
+    @apply relative flex min-h-[100svh] flex-col justify-center;
+    scroll-margin-top: var(--header-h);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1.1;
+  }
+
+  .nav-link-active {
+    @apply text-burgundy;
+    box-shadow: inset 0 -2px 0 0 currentColor;
+  }
+}
+
+@layer utilities {
+  .font-playfair-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
   }
 }

@@ -1,35 +1,32 @@
 import founderPhoto from '@/assets/Ludmila_foto.png';
+import { founderQuote } from '@/data/testimonials';
 
 export default function FounderQuoteSection() {
   return (
     <section
-      id="fundadora"
-      aria-label="Citação da fundadora"
-      data-section="founder-quote"
-      className="bg-burgundy py-16"
+      className="section-screen relative overflow-hidden bg-burgundy px-4 py-16 text-cream"
+      aria-label="Mensagem da fundadora"
     >
-      <div className="container-max px-gutter text-center">
-        <span className="font-display text-5xl leading-none text-primary-gold" aria-hidden="true">
+      <div className="container-max relative z-10 mx-auto max-w-4xl text-center">
+        <span className="font-display text-5xl leading-none text-primary-gold" aria-hidden>
           “
         </span>
-        <blockquote className="mx-auto mt-4 max-w-3xl">
-          <p className="font-display text-lg italic leading-relaxed text-ivory md:text-xl">
-            Fazer parte da 3V mudou completamente a minha visão sobre liderança. Através do
-            programa de mentoria, consegui estruturar a minha ideia de negócio e hoje inspiro
-            outras jovens da minha comunidade.
+        <blockquote className="mt-4">
+          <p className="font-display text-xl italic leading-relaxed md:text-2xl">
+            {founderQuote.text}
           </p>
         </blockquote>
         <div className="mt-8 flex flex-col items-center gap-3">
-          <div className="h-28 w-28 overflow-hidden rounded-full border-[3px] border-primary-gold">
+          <div className="h-28 w-28 overflow-hidden rounded-full border-[3px] border-bronze">
             <img
               src={founderPhoto}
-              alt="Ludmila Ângelo Machaieie"
+              alt={founderQuote.name}
               className="h-full w-full scale-[1.15] object-cover object-[50%_30%]"
             />
           </div>
           <div>
-            <p className="font-body text-base font-semibold text-ivory">Ludmila Ângelo Machaieie</p>
-            <p className="font-body text-xs uppercase tracking-widest text-primary-gold">Fundadora</p>
+            <p className="text-base font-semibold text-ivory">{founderQuote.name}</p>
+            <p className="text-xs uppercase tracking-widest text-bronze">{founderQuote.role}</p>
           </div>
         </div>
       </div>
