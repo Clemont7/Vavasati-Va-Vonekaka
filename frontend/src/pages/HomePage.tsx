@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import HeroSection from '@/components/sections/HeroSection';
-import InternationalFlags from '@/components/sections/InternationalFlags';
 import AboutSection from '@/components/sections/AboutSection';
 import FeaturedPrograms from '@/components/sections/FeaturedPrograms';
 import OportunizaPreview from '@/components/sections/OportunizaPreview';
@@ -20,7 +19,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <InternationalFlags />
       <AboutSection />
       <FeaturedPrograms />
       <OportunizaPreview />

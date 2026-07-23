@@ -65,14 +65,6 @@ export default function Footer() {
           >
             {contactInfo.email}
           </a>
-          <a
-            href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-sm text-stone-500 transition-colors hover:text-burgundy"
-          >
-            WhatsApp {contactInfo.whatsappDisplay}
-          </a>
           <p className="text-sm text-stone-500">{contactInfo.location}</p>
         </div>
       </div>

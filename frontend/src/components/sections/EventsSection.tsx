@@ -1,68 +1,171 @@
-import { Calendar, Images } from 'lucide-react';
-import { nextEvent } from '@/data/events';
-import { contactInfo } from '@/data/contact';
+import { CalendarDays, Clock, MapPin } from 'lucide-react';
+import {
+  HOME_UPCOMING_LIMIT,
+  upcomingEvents,
+  type EventItem,
+} from '@/data/events';
 import { useEventsPanel } from '@/context/EventsPanelContext';
 
+function UpcomingCard({
+  event,
+  onParticipate,
+}: {
+  event: EventItem;
+  onParticipate: () => void;
+}) {
+  return (
+    <article className="relative overflow-hidden rounded-[1.5rem] border border-cream/15 bg-cream/[0.07] p-6 backdrop-blur-sm sm:p-7">
+      <div
+        className="absolute right-0 top-0 h-28 w-28 translate-x-8 -translate-y-8 rounded-full bg-primary-gold/15 blur-2xl"
+        aria-hidden
+      />
+
+      <h3 className="relative font-display text-xl font-semibold text-primary-gold sm:text-2xl">
+        {event.title}
+      </h3>
+      {event.description ? (
+        <p className="relative mt-3 text-sm leading-relaxed text-cream/70">{event.description}</p>
+      ) : null}
+
+      <dl className="relative mt-5 space-y-3">
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/20 text-primary-gold">
+            <CalendarDays className="h-4 w-4" />
+          </span>
+          <div>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Data</dt>
+            <dd className="mt-0.5 text-sm font-medium text-cream sm:text-base">{event.date}</dd>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/20 text-primary-gold">
+            <Clock className="h-4 w-4" />
+          </span>
+          <div>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Hora</dt>
+            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">{event.time}</dd>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/20 text-primary-gold">
+            <MapPin className="h-4 w-4" />
+          </span>
+          <div>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Local</dt>
+            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">{event.location}</dd>
+          </div>
+        </div>
+      </dl>
+
+      <button
+        type="button"
+        onClick={onParticipate}
+        className="relative mt-6 inline-flex w-full items-center justify-center rounded-full bg-primary-gold px-5 py-3 text-sm font-bold text-burgundy shadow-[0_8px_28px_rgba(212,175,55,0.28)] transition-all hover:bg-[#e0c04a]"
+      >
+        Quero Participar
+      </button>
+    </article>
+  );
+}
+
 export default function EventsSection() {
-  const { open } = useEventsPanel();
+  const { openAgenda, openPast, openParticipate } = useEventsPanel();
+  const preview = upcomingEvents.slice(0, HOME_UPCOMING_LIMIT);
+  const hasMore = upcomingEvents.length > HOME_UPCOMING_LIMIT;
+  const isEmpty = upcomingEvents.length === 0;
 
   return (
-    <section id="eventos" className="section-screen bg-cream px-4 py-16" aria-labelledby="eventos-destaque">
-      <div className="container-max mx-auto max-w-4xl text-center">
-        <div className="mb-4 flex justify-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-terracotta/10 text-terracotta">
-            <Calendar className="h-6 w-6" />
-          </div>
-        </div>
-        <h2 id="eventos-destaque" className="mb-2 font-display text-3xl font-bold text-burgundy">
-          Próximo Evento
-        </h2>
-        <p className="mb-1 text-xl font-medium text-terracotta">{nextEvent.title}</p>
-        <p className="mb-8 text-stone-500">
-          {nextEvent.date} • {nextEvent.time}
-        </p>
+    <section
+      id="eventos"
+      className="relative overflow-hidden bg-burgundy px-4 py-16 text-cream md:py-24"
+      aria-labelledby="eventos-destaque"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse 70% 50% at 10% 20%, rgba(176,138,87,0.35), transparent), radial-gradient(ellipse 60% 45% at 90% 80%, rgba(138,75,50,0.4), transparent)',
+        }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/60 to-transparent"
+        aria-hidden
+      />
 
-        <div className="mb-16 inline-block w-full max-w-sm rounded-3xl border-2 border-dashed border-bronze bg-white p-8 shadow-inner">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-sm text-stone-500">Receba o convite exclusivo no seu e-mail</p>
-            <a
-              href={`mailto:${contactInfo.email}?subject=${encodeURIComponent(`Quero participar: ${nextEvent.title}`)}`}
-              className="mt-4 w-full rounded-full bg-burgundy py-3 text-center font-bold text-white hover:bg-burgundy/90"
-            >
-              Quero Participar
-            </a>
-            <button
-              type="button"
-              onClick={open}
-              className="mt-3 text-sm font-semibold text-terracotta underline-offset-4 hover:underline"
-            >
-              Ver todos os eventos
-            </button>
-          </div>
+      <div className="container-max relative mx-auto max-w-5xl">
+        <div className="text-center md:text-left">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-bronze">
+            Agenda 3V
+          </p>
+          <h2
+            id="eventos-destaque"
+            className="font-display text-4xl font-bold leading-tight text-cream md:text-5xl"
+          >
+            Próximos Eventos
+          </h2>
+          <div className="mx-auto mt-5 h-1 w-16 bg-bronze md:mx-0" />
         </div>
 
-        <div className="border-t border-stone-200 pt-12">
-          <h3 className="mb-6 font-display text-2xl font-bold text-burgundy">
-            Galeria dos Eventos Passados
-          </h3>
-          <div className="flex flex-col items-center">
+        {isEmpty ? (
+          <div className="mt-10 rounded-[1.5rem] border border-dashed border-cream/25 bg-cream/[0.06] px-6 py-12 text-center backdrop-blur-sm md:px-10">
+            <p className="font-display text-2xl font-semibold text-primary-gold">
+              Ainda não há eventos previstos
+            </p>
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-cream/75 md:text-base">
+              A agenda será actualizada em breve. Podes consultar os eventos passados ou voltar mais
+              tarde para novidades.
+            </p>
             <button
               type="button"
-              onClick={open}
-              className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-bronze/10 text-bronze transition-all hover:bg-bronze hover:text-white"
-              aria-label="Abrir painel de eventos e galeria"
+              onClick={openPast}
+              className="mt-8 inline-flex items-center justify-center rounded-full border border-cream/25 px-6 py-3.5 text-sm font-semibold text-cream/90 transition-colors hover:border-bronze hover:text-primary-gold"
             >
-              <Images className="h-8 w-8" />
-            </button>
-            <button
-              type="button"
-              onClick={open}
-              className="border-b border-terracotta pb-1 font-bold text-terracotta"
-            >
-              Ver agenda completa
+              Ver eventos passados
             </button>
           </div>
-        </div>
+        ) : (
+          <>
+            <div
+              className={`mt-10 grid gap-5 ${preview.length > 1 ? 'md:grid-cols-2' : 'md:max-w-xl'}`}
+            >
+              {preview.map((event) => (
+                <UpcomingCard
+                  key={event.id}
+                  event={event}
+                  onParticipate={() => openParticipate(event.id)}
+                />
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col items-center justify-between gap-3 sm:flex-row">
+              {hasMore ? (
+                <button
+                  type="button"
+                  onClick={openAgenda}
+                  className="inline-flex items-center justify-center rounded-full border border-cream/25 px-6 py-3 text-sm font-semibold text-cream/90 transition-colors hover:border-bronze hover:text-primary-gold"
+                >
+                  Ver mais eventos
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={openAgenda}
+                  className="inline-flex items-center justify-center rounded-full border border-cream/25 px-6 py-3 text-sm font-semibold text-cream/90 transition-colors hover:border-bronze hover:text-primary-gold"
+                >
+                  Ver agenda completa
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={openPast}
+                className="inline-flex items-center justify-center rounded-full border border-transparent px-6 py-3 text-sm font-semibold text-cream/70 transition-colors hover:text-primary-gold"
+              >
+                Ver eventos passados
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

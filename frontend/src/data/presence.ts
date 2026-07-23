@@ -1,12 +1,11 @@
 /** Países da presença internacional — bandeiras via flagcdn */
 export const internationalPresence = [
+  { name: 'Malásia', code: 'my' },
   { name: 'Moçambique', code: 'mz' },
-  { name: 'Portugal', code: 'pt' },
   { name: 'Polónia', code: 'pl' },
+  { name: 'Portugal', code: 'pt' },
   { name: 'Rússia', code: 'ru' },
   { name: 'Turquia', code: 'tr' },
-  { name: 'Brasil', code: 'br' },
-  { name: 'África do Sul', code: 'za' },
 ];
 
 export function flagUrl(code: string) {

@@ -21,6 +21,26 @@ export const events: EventItem[] = [
     status: 'proximo',
   },
   {
+    id: 'circulo-conversa',
+    title: 'Círculo de Conversa: Voz e Propósito',
+    date: '5 de Dezembro de 2026',
+    time: '19:00 (GMT+2)',
+    location: 'Online (Zoom)',
+    description:
+      'Encontro íntimo para partilhar experiências, fortalecer a voz colectiva e alinhar intenções para o novo ciclo.',
+    status: 'proximo',
+  },
+  {
+    id: 'oficina-literacia',
+    title: 'Oficina de Literacia Ética',
+    date: '20 de Janeiro de 2027',
+    time: '18:00 (GMT+2)',
+    location: 'Maputo / Híbrido',
+    description:
+      'Prática de reflexão ética e comunicação responsável no quotidiano pessoal e profissional.',
+    status: 'proximo',
+  },
+  {
     id: 'workshop-valores',
     title: 'Workshop: Cultivo de Valores e Imagem',
     date: '18 de Abril de 2026',
@@ -52,4 +72,8 @@ export const events: EventItem[] = [
   },
 ];
 
-export const nextEvent = events.find((e) => e.status === 'proximo') ?? events[0];
+export const upcomingEvents = events.filter((e) => e.status === 'proximo');
+export const pastEvents = events.filter((e) => e.status === 'passado');
+
+/** Quantos eventos próximos mostrar na home antes de «Ver mais» */
+export const HOME_UPCOMING_LIMIT = 2;

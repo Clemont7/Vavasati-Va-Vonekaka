@@ -5,9 +5,9 @@ export default function InternationalFlags() {
   const loop = [...internationalPresence, ...internationalPresence];
 
   return (
-    <section
+    <div
       aria-label="Presença internacional"
-      className="relative overflow-hidden py-16"
+      className="relative mt-14 overflow-hidden py-10 md:mt-16 md:py-12"
     >
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-20">
         <img
@@ -37,6 +37,6 @@ export default function InternationalFlags() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

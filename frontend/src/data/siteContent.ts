@@ -46,9 +46,9 @@ export const siteContent = {
     'Comunidade de suporte em Moçambique e na diáspora',
   ],
   heroSubtitle:
-    'Uma rede dedicada a elevar e capacitar o potencial feminino através de conexões estratégicas e desenvolvimento integral.',
+    'Onde levantar Mulheres é Missão, o Sucesso é Inevitável!',
   impactBadge: {
-    title: 'Impacto Global',
-    text: 'Unindo continentes através da liderança feminina.',
+    count: '50+',
+    label: 'Membros',
   },
 };

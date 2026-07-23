@@ -13,7 +13,7 @@ export default function App() {
         <Route path="oportuniza" element={<Navigate to="/#oportuniza" replace />} />
         <Route path="eventos" element={<Navigate to="/" replace />} />
         <Route path="contactos" element={<Navigate to="/#contactos" replace />} />
-        <Route path="tornar-se-membro" element={<Navigate to="/#contactos" replace />} />
+        <Route path="tornar-se-membro" element={<Navigate to="/" replace />} />
         <Route path="inicio" element={<Navigate to="/" replace />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

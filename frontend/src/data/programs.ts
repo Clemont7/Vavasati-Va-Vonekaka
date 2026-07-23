@@ -1,30 +1,59 @@
-export type Program = {
+export type MemberBenefit = {
   id: string;
   title: string;
   description: string;
-  icon: 'leadership' | 'mentorship' | 'voice';
+  icon:
+    | 'career'
+    | 'enterprise'
+    | 'branding'
+    | 'personal'
+    | 'network'
+    | 'growth'
+    | 'digital';
 };
 
-export const featuredPrograms: Program[] = [
+/** Direitos de membro integral — documento «Linhas Gerais» da 3V. */
+export const memberBenefits: MemberBenefit[] = [
   {
-    id: 'lideranca',
-    title: 'Liderança Executiva',
-    description:
-      'Capacitação intensiva para mulheres que buscam cargos de gestão, governança e influência estratégica.',
-    icon: 'leadership',
+    id: 'carreira',
+    title: 'Catalização de carreira',
+    description: 'Acelera a tua trajetória com orientação, oportunidades e foco no próximo passo.',
+    icon: 'career',
   },
   {
-    id: 'mentoria',
-    title: 'Mentoria 1 a 1',
-    description:
-      'Acompanhamento personalizado com referências de mercado para aceleração de carreira e negócios.',
-    icon: 'mentorship',
+    id: 'empreendimento',
+    title: 'Promoção de empreendimento',
+    description: 'Impulso para criar, crescer e sustentar o teu próprio negócio.',
+    icon: 'enterprise',
   },
   {
-    id: 'oratoria',
-    title: 'Voz e Oratória',
-    description:
-      'Workshop focado no desenvolvimento da comunicação assertiva e presença de palco para lideranças.',
-    icon: 'voice',
+    id: 'branding',
+    title: 'Branding Pessoal',
+    description: 'Constrói uma presença autêntica que te abre portas e te diferencia.',
+    icon: 'branding',
+  },
+  {
+    id: 'pessoal',
+    title: 'Desenvolvimento Pessoal',
+    description: 'Cresce por dentro — hábitos, confiança e clareza para resplandecer.',
+    icon: 'personal',
+  },
+  {
+    id: 'networking',
+    title: 'Networking denso e Internacional',
+    description: 'Liga-te a Mulheres Resplandecentes em Moçambique e na diáspora.',
+    icon: 'network',
+  },
+  {
+    id: 'progressao',
+    title: 'Oportunidade de Progressão interna',
+    description: 'Evolui dentro da 3V — mais responsabilidade, mais impacto, mais voz.',
+    icon: 'growth',
+  },
+  {
+    id: 'digital',
+    title: 'Literacia Digital',
+    description: 'Domina ferramentas e presença online para o século em que vivemos.',
+    icon: 'digital',
   },
 ];

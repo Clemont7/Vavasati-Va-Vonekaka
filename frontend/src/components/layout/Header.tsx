@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { sectionNavigation } from '@/data/navigation';
-import { useEventsPanel } from '@/context/EventsPanelContext';
 import logoIcon from '@/assets/3V_brand_book/img5.jpeg';
 
 /** Todas as secções com âncora — Eventos também conta para o scroll-spy */
@@ -10,7 +9,6 @@ const SCROLL_SECTIONS = sectionNavigation.map((item) => item.id);
 export default function Header() {
   const [activeId, setActiveId] = useState('inicio');
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { open: openEvents } = useEventsPanel();
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -39,13 +37,8 @@ export default function Header() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  function handleNavClick(id: string, opensEventsPanel?: boolean) {
+  function handleNavClick(id: string) {
     setMobileOpen(false);
-    if (opensEventsPanel) {
-      setActiveId(id);
-      openEvents();
-      return;
-    }
     setActiveId(id);
     const el = document.getElementById(id);
     el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -77,7 +70,7 @@ export default function Header() {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => handleNavClick(item.id, item.opensEventsPanel)}
+                onClick={() => handleNavClick(item.id)}
                 className={`pb-1 text-sm font-medium transition-colors ${
                   isActive
                     ? 'nav-link-active'
@@ -113,7 +106,7 @@ export default function Header() {
                 <li key={item.id}>
                   <button
                     type="button"
-                    onClick={() => handleNavClick(item.id, item.opensEventsPanel)}
+                    onClick={() => handleNavClick(item.id)}
                     className={`w-full py-2 text-left text-base font-medium ${
                       isActive ? 'text-burgundy underline underline-offset-4' : 'text-terracotta'
                     }`}

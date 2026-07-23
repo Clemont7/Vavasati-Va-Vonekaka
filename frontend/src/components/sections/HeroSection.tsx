@@ -1,53 +1,65 @@
 import heroImage from '@/assets/3V_brand_book/img1.jpeg';
 import { siteContent } from '@/data/siteContent';
+import { useJoinForm } from '@/context/JoinFormContext';
 
 export default function HeroSection() {
+  const { open: openJoinForm } = useJoinForm();
+
   function scrollTo(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (
-    <section id="inicio" className="section-screen overflow-x-hidden px-4 py-12 md:py-16">
-      <div className="container-max grid items-center gap-12 md:grid-cols-2">
-        <div className="space-y-8">
-          <h1 className="hero-title font-display font-bold text-burgundy">
+    <section
+      id="inicio"
+      className="relative flex h-[calc(100svh-var(--header-h))] max-h-[calc(100svh-var(--header-h))] flex-col justify-center overflow-hidden px-4 pb-6 pt-2 sm:pb-8 sm:pt-3 md:pb-10 md:pt-4"
+      style={{ scrollMarginTop: 'var(--header-h)' }}
+    >
+      <div className="container-max grid h-full min-h-0 grid-rows-[auto_minmax(0,1.35fr)] items-center gap-2 sm:gap-3 md:grid-cols-2 md:grid-rows-1 md:gap-8 lg:gap-12">
+        <div className="flex min-h-0 flex-col justify-center space-y-3 sm:space-y-4 md:space-y-5">
+          <h1 className="font-display text-[clamp(1.65rem,5vw,3.25rem)] font-bold leading-[1.08] text-burgundy">
             Mulheres que <br />
             <span className="font-playfair-italic text-terracotta">Resplandecem</span>
           </h1>
-          <p className="max-w-md text-lg leading-relaxed text-stone-600">
+          <p className="whitespace-nowrap text-[clamp(0.7rem,2.1vw,1.125rem)] leading-snug text-stone-600">
             {siteContent.heroSubtitle}
           </p>
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-2.5 sm:gap-3">
             <button
               type="button"
-              onClick={() => scrollTo('contactos')}
-              className="rounded-full bg-burgundy px-8 py-4 font-medium text-white shadow-lg transition-all hover:bg-burgundy/90"
+              onClick={openJoinForm}
+              className="rounded-full bg-burgundy px-4 py-2 text-xs font-medium text-white shadow-lg transition-all hover:bg-burgundy/90 sm:px-5 sm:py-2.5 sm:text-sm md:px-7 md:py-3 md:text-base"
             >
               Tornar-se Membro
             </button>
             <button
               type="button"
               onClick={() => scrollTo('oportuniza')}
-              className="rounded-full border border-terracotta px-8 py-4 font-medium text-terracotta transition-all hover:bg-terracotta/5"
+              className="rounded-full border border-terracotta px-4 py-2 text-xs font-medium text-terracotta transition-all hover:bg-terracotta/5 sm:px-5 sm:py-2.5 sm:text-sm md:px-7 md:py-3 md:text-base"
             >
               Explorar Oportunidades
             </button>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="translate-x-2 overflow-hidden rounded-3xl border-4 border-white shadow-2xl rotate-1 md:translate-x-6 md:rotate-3">
-            <img
-              src={heroImage}
-              alt="Mulheres da comunidade 3V"
-              className="aspect-[4/5] w-full object-cover"
-            />
-          </div>
-          <div className="absolute -bottom-6 -left-2 hidden max-w-[180px] rounded-xl border border-stone-100 bg-white p-4 shadow-xl sm:block md:-left-6">
-            <p className="mb-1 text-xs font-bold uppercase text-burgundy">
-              {siteContent.impactBadge.title}
-            </p>
-            <p className="text-[10px] text-stone-500">{siteContent.impactBadge.text}</p>
+        <div className="relative mx-auto flex min-h-0 w-full max-w-md items-center justify-center self-stretch pb-8 sm:pb-9 md:max-w-none md:pb-10">
+          <div className="relative h-full min-h-[42svh] w-full md:min-h-0">
+            <div className="flex h-full items-center justify-center overflow-hidden rounded-2xl border-4 border-white bg-[#f7f0e8] shadow-2xl rotate-1 md:rotate-2">
+              <img
+                src={heroImage}
+                alt="Mulheres da comunidade 3V"
+                className="h-full w-full origin-center object-contain"
+                style={{ transform: 'scale(1.38)' }}
+              />
+            </div>
+            <div className="absolute bottom-0 left-3 z-10 flex aspect-square w-[5.75rem] translate-y-[55%] flex-col items-center justify-center rounded-2xl border border-stone-200 bg-white p-2 shadow-xl sm:left-4 sm:w-24 md:left-5 md:w-28">
+              <p className="font-display text-2xl font-bold leading-none text-burgundy sm:text-3xl md:text-4xl">
+                {siteContent.impactBadge.count}
+              </p>
+              <p className="mt-1 text-center text-[10px] font-semibold uppercase tracking-wide text-stone-500 sm:text-xs">
+                {siteContent.impactBadge.label}
+              </p>
+            </div>
           </div>
         </div>
       </div>

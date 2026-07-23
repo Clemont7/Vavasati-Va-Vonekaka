@@ -4,8 +4,9 @@ import { founderQuote } from '@/data/testimonials';
 export default function FounderQuoteSection() {
   return (
     <section
-      className="section-screen relative overflow-hidden bg-burgundy px-4 py-16 text-cream"
+      className="relative overflow-hidden bg-burgundy px-4 py-14 text-cream md:py-16"
       aria-label="Mensagem da fundadora"
+      style={{ scrollMarginTop: 'var(--header-h)' }}
     >
       <div className="container-max relative z-10 mx-auto max-w-4xl text-center">
         <span className="font-display text-5xl leading-none text-primary-gold" aria-hidden>
