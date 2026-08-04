@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Post } from '@nestjs/common';
 import { EventsService } from './events.service';
+import { ParseDatePipe } from '../../common/parse-date/parse-date.pipe';
 
 @Controller('events')
 export class EventsController {
@@ -11,8 +12,12 @@ export class EventsController {
   }
 
   @Post(':id/:event/:date')
-  updateRsvp(@Param ('id') id: string, @Param ('event') event: string, @Param ('date') date: string){
-    return this.eventsService.updateRsvp(id, event, new Date(date));
+  updateRsvp(
+    @Param ('id') id: string, 
+    @Param ('event') event: string, 
+    @Param ('date', ParseDatePipe) date: Date)
+    {
+    return this.eventsService.updateRsvp(id, event, date);
   }
 
 }
