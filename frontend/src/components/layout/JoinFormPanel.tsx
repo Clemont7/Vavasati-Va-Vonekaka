@@ -5,7 +5,7 @@ import { useJoinForm } from '@/context/JoinFormContext';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 /** Altura generosa para o embed do Google Forms caber sem scroll interno no iframe */
-const FORM_IFRAME_HEIGHT = 2400;
+const FORM_IFRAME_HEIGHT = 2840;
 
 function toEmbedUrl(url: string): string {
   try {
@@ -88,8 +88,8 @@ export default function JoinFormPanel() {
           {embedUrl ? (
             <iframe
               title={isSponsor ? 'Formulário de patrocínio 3V' : 'Formulário de adesão 3V'}
-              src={embedUrl}
-              scrolling="no"
+              src={"https://docs.google.com/forms/d/e/1FAIpQLSdsFHa8Cyfdrx74JeMT6oGUcA2OzVM8uOVguEZFRgn-2lK3Uw/viewform?embedded=true"}
+              scrolling="yes"
               className="pointer-events-auto block w-full max-w-full border-0 bg-white"
               style={{ height: FORM_IFRAME_HEIGHT }}
             />
