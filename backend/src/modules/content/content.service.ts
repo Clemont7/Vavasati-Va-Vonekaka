@@ -5,8 +5,8 @@ export class ContentService {
   getContent() {
     return {
       name: 'Vavasati Va Vonekaka - 3V',
-      mission: 'Rede de apoio inclusiva e estrat?gica para adolescentes e jovens mo?ambicanas.',
-      vision: 'Mulheres mo?ambicanas que lideram e servem com prop?sito e excel?ncia.',
+      mission: 'Rede de apoio inclusiva e estratégica para adolescentes e jovens moçambicanas.',
+      vision: 'Mulheres moçambicanas que lideram e servem com propósito e excelência.',
     };
   }
 }

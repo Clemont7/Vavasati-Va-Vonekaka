@@ -1,10 +1,10 @@
+import PageShell from '@/components/layout/PageShell';
+
 export default function ContactPage() {
   return (
-    <section>
-      <h1 style={ marginTop: 0 }>Contactos</h1>
-      <p style={ color: 'var(--muted)', lineHeight: 1.6 }>
-        Formul?rio e canais diretos para contacto com a organiza??o.
-      </p>
-    </section>
+    <PageShell
+      title="Contactos"
+      description="Formulário e canais diretos para contacto com a organização."
+    />
   );
 }

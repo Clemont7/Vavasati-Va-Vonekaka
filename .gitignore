@@ -5,6 +5,8 @@ coverage/
 .env
 frontend/.env
 backend/.env
+*.env.example
 .DS_Store
 Thumbs.db
 *.log
+
