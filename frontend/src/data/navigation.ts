@@ -1,14 +1,13 @@
-export const navigation = [
-  { label: 'In?cio', path: '/' },
-  { label: 'Sobre a 3V', path: '/sobre' },
-  { label: 'Departamentos', path: '/departamentos' },
-  { label: 'OPORTUNIZA', path: '/oportuniza' },
-  { label: 'Eventos', path: '/eventos' },
-  { label: 'Galeria', path: '/galeria' },
-  { label: 'Not?cias', path: '/noticias' },
-  { label: 'Documentos', path: '/documentos' },
-  { label: 'Parceiros', path: '/parceiros' },
-  { label: 'Transpar?ncia', path: '/transparencia' },
-  { label: 'Contactos', path: '/contactos' },
-  { label: 'Tornar-se membro', path: '/tornar-se-membro' },
+export type SectionNavItem = {
+  id: string;
+  label: string;
+};
+
+/** Itens do navbar — secções da página longa */
+export const sectionNavigation: SectionNavItem[] = [
+  { id: 'inicio', label: 'Início' },
+  { id: 'sobre', label: 'Sobre a Comunidade' },
+  { id: 'oportuniza', label: 'OPORTUNIZA' },
+  { id: 'eventos', label: 'Eventos' },
+  { id: 'contactos', label: 'Contactos' },
 ];

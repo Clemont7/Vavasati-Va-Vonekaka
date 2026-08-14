@@ -1,38 +1,38 @@
 export const departments = [
   {
     name: 'Espiritual',
-    description: 'Promove o despertar e fortalecimento espiritual, com ora??o, estudos b?blicos e apoio espiritual b?sico.',
+    description: 'Promove o despertar e fortalecimento espiritual, com oração, estudos bíblicos e apoio espiritual básico.',
   },
   {
-    name: 'Gest?o de Projetos & Empreendedorismo',
-    description: 'Planeia iniciativas, desenvolve compet?ncias empreendedoras e apoia ideias de neg?cio.',
+    name: 'Gestão de Projetos & Empreendedorismo',
+    description: 'Planeia iniciativas, desenvolve competências empreendedoras e apoia ideias de negócio.',
   },
   {
-    name: 'Finan?as',
-    description: 'Gere or?amento, fundos, relat?rios financeiros e controlo interno.',
+    name: 'Finanças',
+    description: 'Gere orçamento, fundos, relatórios financeiros e controlo interno.',
   },
   {
-    name: 'Sa?de F?sica e Mental',
-    description: 'Trabalha autocuidado, sa?de emocional, bem-estar, autoestima e imagem pessoal.',
+    name: 'Saúde Física e Mental',
+    description: 'Trabalha autocuidado, saúde emocional, bem-estar, autoestima e imagem pessoal.',
   },
   {
-    name: 'Acad?mico e Profissional',
-    description: 'Apoia orienta??o vocacional, mentoria de carreira e capacita??o t?cnica.',
+    name: 'Académico e Profissional',
+    description: 'Apoia orientação vocacional, mentoria de carreira e capacitação técnica.',
   },
   {
-    name: 'Rela??es Humanas',
-    description: 'Fortalece rela??es saud?veis, comunica??o eficaz, empatia e trabalho em equipa.',
+    name: 'Relações Humanas',
+    description: 'Fortalece relações saudáveis, comunicação eficaz, empatia e trabalho em equipa.',
   },
   {
-    name: 'Tecnologias de Informa??o e Comunica??o',
-    description: 'Gere plataformas digitais, dados e capacita??o tecnol?gica.',
+    name: 'Tecnologias de Informação e Comunicação',
+    description: 'Gere plataformas digitais, dados e capacitação tecnológica.',
   },
   {
     name: 'Marketing e Imagem',
-    description: 'Cria conte?dos, cobre eventos e amplia a visibilidade da organiza??o.',
+    description: 'Cria conteúdos, cobre eventos e amplia a visibilidade da organização.',
   },
   {
     name: 'Cultura e Beleza',
-    description: 'Liga identidade, cultura, est?tica e valoriza??o da mulher.',
+    description: 'Liga identidade, cultura, estética e valorização da mulher.',
   },
 ];
