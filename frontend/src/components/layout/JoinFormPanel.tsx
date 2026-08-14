@@ -88,7 +88,7 @@ export default function JoinFormPanel() {
           {embedUrl ? (
             <iframe
               title={isSponsor ? 'Formulário de patrocínio 3V' : 'Formulário de adesão 3V'}
-              src={"https://docs.google.com/forms/d/e/1FAIpQLSdsFHa8Cyfdrx74JeMT6oGUcA2OzVM8uOVguEZFRgn-2lK3Uw/viewform?embedded=true"}
+              src={embedUrl}
               scrolling="yes"
               className="pointer-events-auto block w-full max-w-full border-0 bg-white"
               style={{ height: FORM_IFRAME_HEIGHT }}

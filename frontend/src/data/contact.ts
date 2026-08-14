@@ -34,8 +34,9 @@ export const contactInfo = {
   joinFormUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLSfUOaUh_dx8id3ENUSP5eZyqGtYN4YVfXU-E0iIJCrZiBIksw/viewform',
   sponsorFormMailtoSubject: 'Manifestação de interesse — Torna-te Patrocinador 3V',
-  /** Google Forms — patrocínio (deixar vazio até existir formulário) */
-  sponsorFormUrl: '',
+  /** Google Forms — patrocínio */
+  sponsorFormUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLSdsFHa8Cyfdrx74JeMT6oGUcA2OzVM8uOVguEZFRgn-2lK3Uw/viewform',
 };
 
 /** Link wa.me com mensagem pronta; null se o número ainda não estiver definido */

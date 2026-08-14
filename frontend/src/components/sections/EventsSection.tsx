@@ -96,7 +96,7 @@ export default function EventsSection() {
       <div className="container-max relative mx-auto max-w-5xl">
         <div className="text-center md:text-left">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-bronze">
-            Agenda 3V
+            Agenda da 3V
           </p>
           <h2
             id="eventos-destaque"

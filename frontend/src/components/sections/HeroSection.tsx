@@ -1,6 +1,64 @@
+import { useEffect, useState } from 'react';
 import heroImage from '@/assets/3V_brand_book/img1.jpeg';
 import { siteContent } from '@/data/siteContent';
 import { useJoinForm } from '@/context/JoinFormContext';
+
+const TYPE_MS = 55;
+const HOLD_MS = 10_000;
+const RESTART_GAP_MS = 400;
+
+function TypewriterSlogan({ text }: { text: string }) {
+  const [shown, setShown] = useState('');
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setShown(text);
+      return;
+    }
+
+    let index = 0;
+    let timeout = 0;
+
+    const typeNext = () => {
+      if (index < text.length) {
+        index += 1;
+        setShown(text.slice(0, index));
+        timeout = window.setTimeout(typeNext, TYPE_MS);
+        return;
+      }
+
+      timeout = window.setTimeout(() => {
+        index = 0;
+        setShown('');
+        timeout = window.setTimeout(typeNext, RESTART_GAP_MS);
+      }, HOLD_MS);
+    };
+
+    timeout = window.setTimeout(typeNext, RESTART_GAP_MS);
+    return () => window.clearTimeout(timeout);
+  }, [text, reducedMotion]);
+
+  return (
+    <p className="relative whitespace-nowrap text-[clamp(0.7rem,2.1vw,1.125rem)] leading-snug text-stone-600">
+      <span className="invisible" aria-hidden>
+        {text}
+      </span>
+      <span className="absolute inset-0" aria-live="polite">
+        {shown}
+        {reducedMotion ? null : <span className="typewriter-caret" aria-hidden />}
+      </span>
+    </p>
+  );
+}
 
 export default function HeroSection() {
   const { open: openJoinForm } = useJoinForm();
@@ -19,11 +77,9 @@ export default function HeroSection() {
         <div className="flex min-h-0 flex-col justify-center space-y-3 sm:space-y-4 md:space-y-5">
           <h1 className="font-display text-[clamp(1.65rem,5vw,3.25rem)] font-bold leading-[1.08] text-burgundy">
             Mulheres que <br />
-            <span className="font-playfair-italic text-terracotta">Resplandecem</span>
+            <span className="logo-shine font-playfair-italic">Resplandecem</span>
           </h1>
-          <p className="whitespace-nowrap text-[clamp(0.7rem,2.1vw,1.125rem)] leading-snug text-stone-600">
-            {siteContent.heroSubtitle}
-          </p>
+          <TypewriterSlogan text={siteContent.heroSubtitle} />
           <div className="flex flex-wrap gap-2.5 sm:gap-3">
             <button
               type="button"
