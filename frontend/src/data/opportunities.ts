@@ -1,7 +1,7 @@
 export type Opportunity = {
   id: string;
   title: string;
-  type: 'Bolsa' | 'Estágio' | 'Vaga' | 'Mentoria';
+  type: 'Bolsa' | 'Estágio' | 'Vaga' | 'Mentoria' | 'Curso';
   location: string;
   summary: string;
   expiresIn: string;
@@ -15,13 +15,13 @@ export type Opportunity = {
 export const opportunities: Opportunity[] = [
   {
     id: 'bolsa-tech',
-    title: 'Bolsa de Estudos Tech 2026',
-    type: 'Bolsa',
+    title: 'ECA UEM- Edital dos cursos de curta duração da SHARE',
+    type: 'Curso',
     location: 'Moçambique (Remoto)',
     summary:
       'Iniciativa para capacitar mulheres em desenvolvimento de software e ciência de dados, com mentoria e apoio financeiro.',
     expiresIn: 'Expira em 12 dias',
-    href: 'https://example.com/oportuniza/bolsa-tech-2026',
+    href: 'https://www.linkedin.com/posts/eca-uem-7753b1389_edital-dos-cursos-de-curta-dura%C3%A7%C3%A3o-da-share-7487201748382650368-f5GL/?utm_source=social_share_send&utm_medium=ios_app&rcm=ACoAAD5uZGoBN8maJ0xMiwN8ubUVBTXTzk_vv-Y&utm_campaign=copy_link',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80',
     typeColor: 'red',
   },
