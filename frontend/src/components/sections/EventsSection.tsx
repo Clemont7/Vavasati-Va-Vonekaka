@@ -69,10 +69,14 @@ function UpcomingCard({
 }
 
 export default function EventsSection() {
-  const { openAgenda, openPast, openParticipate } = useEventsPanel();
+  const { openAgenda, openParticipate } = useEventsPanel();
   const preview = upcomingEvents.slice(0, HOME_UPCOMING_LIMIT);
   const hasMore = upcomingEvents.length > HOME_UPCOMING_LIMIT;
   const isEmpty = upcomingEvents.length === 0;
+
+  function scrollToPastGallery() {
+    document.getElementById('galeria-eventos')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   return (
     <section
@@ -118,7 +122,7 @@ export default function EventsSection() {
             </p>
             <button
               type="button"
-              onClick={openPast}
+              onClick={scrollToPastGallery}
               className="mt-8 inline-flex items-center justify-center rounded-full border border-cream/25 px-6 py-3.5 text-sm font-semibold text-cream/90 transition-colors hover:border-bronze hover:text-primary-gold"
             >
               Ver eventos passados
@@ -158,7 +162,7 @@ export default function EventsSection() {
               )}
               <button
                 type="button"
-                onClick={openPast}
+                onClick={scrollToPastGallery}
                 className="inline-flex items-center justify-center rounded-full border border-transparent px-6 py-3 text-sm font-semibold text-cream/70 transition-colors hover:text-primary-gold"
               >
                 Ver eventos passados

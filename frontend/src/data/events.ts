@@ -1,3 +1,7 @@
+import { primeiroEncontroMaputoGallery, type EventGalleryItem } from './eventGalleries';
+
+export type { EventGalleryItem };
+
 export type EventItem = {
   id: string;
   title: string;
@@ -6,6 +10,7 @@ export type EventItem = {
   location: string;
   description: string;
   status: 'proximo' | 'passado';
+  gallery?: EventGalleryItem[];
 };
 
 /** Eventos oficiais — apenas o que está confirmado */
@@ -19,6 +24,17 @@ export const events: EventItem[] = [
     description:
       'Celebração do lançamento oficial da Vavasati Va Vonekaka com painéis, networking e apresentação dos departamentos.',
     status: 'proximo',
+  },
+  {
+    id: 'primeiro-encontro-maputo',
+    title: 'Primeiro Encontro das Mulheres da Comunidade',
+    date: '22 de Agosto de 2026',
+    time: 'Tarde',
+    location: 'Sala de Reuniões do Ministério da Juventude e Desporto, Maputo',
+    description:
+      'Primeiro encontro presencial das mulheres da comunidade 3V em Maputo — partilha, acolhimento e alinhamento de propósito.',
+    status: 'passado',
+    gallery: primeiroEncontroMaputoGallery,
   },
 ];
 

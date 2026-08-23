@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import FeaturedPrograms from '@/components/sections/FeaturedPrograms';
 import OportunizaPreview from '@/components/sections/OportunizaPreview';
+import PastEventsGallerySection from '@/components/sections/PastEventsGallerySection';
 import EventsSection from '@/components/sections/EventsSection';
 import FounderQuoteSection from '@/components/sections/FounderQuoteSection';
 import MembershipCTA from '@/components/sections/MembershipCTA';
@@ -23,6 +24,7 @@ export default function HomePage() {
       <FeaturedPrograms />
       <OportunizaPreview />
       <EventsSection />
+      <PastEventsGallerySection />
       <FounderQuoteSection />
       <MembershipCTA />
     </>

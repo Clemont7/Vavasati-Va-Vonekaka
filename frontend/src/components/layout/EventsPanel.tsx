@@ -10,12 +10,15 @@ function EventCard({
   event,
   variant = 'upcoming',
   onParticipate,
+  onViewGallery,
 }: {
   event: (typeof events)[number];
   variant?: 'upcoming' | 'past';
   onParticipate?: () => void;
+  onViewGallery?: () => void;
 }) {
   const isPast = variant === 'past';
+  const hasGallery = Boolean(event.gallery?.length);
 
   return (
     <li
@@ -43,6 +46,15 @@ function EventCard({
           className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-burgundy px-4 py-2.5 text-sm font-bold text-white hover:bg-burgundy/90"
         >
           Quero participar
+        </button>
+      ) : null}
+      {hasGallery && onViewGallery ? (
+        <button
+          type="button"
+          onClick={onViewGallery}
+          className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-burgundy/20 bg-white px-4 py-2.5 text-sm font-bold text-burgundy hover:bg-burgundy/5"
+        >
+          Ver galeria
         </button>
       ) : null}
     </li>
@@ -235,6 +247,13 @@ export default function EventsPanel() {
   const { isOpen, view, eventId, close, openAgenda, openParticipate } = useEventsPanel();
   useBodyScrollLock(isOpen);
 
+  const scrollToGallery = () => {
+    close();
+    requestAnimationFrame(() => {
+      document.getElementById('galeria-eventos')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
+
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -319,7 +338,12 @@ export default function EventsPanel() {
                 ) : (
                   <ul className="space-y-3">
                     {pastEvents.map((event) => (
-                      <EventCard key={event.id} event={event} variant="past" />
+                      <EventCard
+                        key={event.id}
+                        event={event}
+                        variant="past"
+                        onViewGallery={event.gallery?.length ? scrollToGallery : undefined}
+                      />
                     ))}
                   </ul>
                 )}
@@ -336,7 +360,12 @@ export default function EventsPanel() {
               ) : (
                 <ul className="space-y-3">
                   {pastEvents.map((event) => (
-                    <EventCard key={event.id} event={event} variant="past" />
+                    <EventCard
+                      key={event.id}
+                      event={event}
+                      variant="past"
+                      onViewGallery={event.gallery?.length ? scrollToGallery : undefined}
+                    />
                   ))}
                 </ul>
               )}
