@@ -1,4 +1,3 @@
-import logoBg from '@/assets/3V_brand_book/logo.jpg';
 import { flagUrl, internationalPresence } from '@/data/presence';
 
 export default function InternationalFlags() {
@@ -7,19 +6,10 @@ export default function InternationalFlags() {
   return (
     <div
       aria-label="Presença internacional"
-      className="relative mt-14 overflow-hidden py-10 md:mt-16 md:py-12"
+      className="relative mt-16 overflow-hidden pb-2 pt-8 md:mt-20 md:pb-3 md:pt-10"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-20">
-        <img
-          src={logoBg}
-          alt=""
-          className="w-[120%] max-w-none grayscale contrast-125"
-          aria-hidden
-        />
-      </div>
-
       <div className="relative z-10 text-center">
-        <p className="mb-8 font-display text-xl italic text-terracotta">
+        <p className="mb-8 font-display text-2xl font-bold italic text-gold [text-shadow:0_2px_4px_rgba(61,28,2,0.9),0_0_16px_rgba(61,28,2,0.5)] md:text-3xl">
           Nossa Presença Internacional
         </p>
         <div className="relative w-full overflow-hidden">

@@ -58,12 +58,15 @@ export default function Header() {
             className="h-11 w-11 rounded-full border border-bronze object-cover shadow-sm"
             aria-hidden
           />
-          <span className="hidden font-display text-lg font-bold uppercase tracking-widest text-burgundy sm:block">
+          <span className="hidden font-display text-lg font-bold uppercase tracking-widest text-terracotta sm:block">
             Vavasati Va Vonekaka
           </span>
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Secções principais">
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Secções principais"
+        >
           {sectionNavigation.map((item) => {
             const isActive = activeId === item.id;
             return (
@@ -74,7 +77,7 @@ export default function Header() {
                 className={`pb-1 text-sm font-medium transition-colors ${
                   isActive
                     ? 'nav-link-active'
-                    : 'text-terracotta hover:text-burgundy'
+                    : 'text-terracotta hover:text-terracotta'
                 }`}
               >
                 {item.label}
@@ -85,12 +88,16 @@ export default function Header() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-burgundy md:hidden"
+          className="rounded-lg p-2 text-terracotta md:hidden"
           aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -108,7 +115,9 @@ export default function Header() {
                     type="button"
                     onClick={() => handleNavClick(item.id)}
                     className={`w-full py-2 text-left text-base font-medium ${
-                      isActive ? 'text-burgundy underline underline-offset-4' : 'text-terracotta'
+                      isActive
+                        ? 'text-terracotta underline underline-offset-4'
+                        : 'text-terracotta'
                     }`}
                   >
                     {item.label}

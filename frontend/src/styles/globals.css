@@ -4,9 +4,12 @@
 
 @layer base {
   :root {
-    --color-burgundy: #5a0d1b;
-    --color-terracotta: #8a4b32;
-    --color-bronze: #b08a57;
+    /* Paleta oficial do brand book */
+    --color-gold: #d4af37;
+    --color-terracotta: #a8645c;
+    --color-dark-brown: #3d1c02;
+    --color-beige: #e8e1d3;
+    --color-bronze: #d4af37;
     --color-cream: #fff9f5;
     --header-h: 4.5rem;
   }
@@ -165,7 +168,11 @@
     }
 
     .side-panel-scroll::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #c49a68 0%, var(--color-terracotta) 100%);
+      background: linear-gradient(
+        180deg,
+        #c49a68 0%,
+        var(--color-terracotta) 100%
+      );
       border: 2px solid var(--color-cream);
       background-clip: padding-box;
     }
@@ -190,7 +197,7 @@
   }
 
   .nav-link-active {
-    @apply text-burgundy;
+    @apply text-terracotta;
     box-shadow: inset 0 -2px 0 0 currentColor;
   }
 }
@@ -203,6 +210,34 @@
 
   .benefit-shimmer {
     animation: benefit-shimmer-sweep 1.8s ease-in-out;
+  }
+
+  .logo-shine {
+    background-image: linear-gradient(
+      110deg,
+      #a8645c 0%,
+      #a8645c 38%,
+      #d4af37 48%,
+      #fff9f5 50%,
+      #d4af37 52%,
+      #a8645c 62%,
+      #a8645c 100%
+    );
+    background-size: 220% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: logo-shine 3.2s ease-in-out infinite;
+  }
+
+  .typewriter-caret {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.9em;
+    margin-left: 0.12em;
+    vertical-align: -0.12em;
+    background: currentColor;
+    animation: typewriter-caret 0.9s steps(1) infinite;
   }
 }
 
@@ -220,9 +255,38 @@
   }
 }
 
+@keyframes logo-shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -20% 50%;
+  }
+}
+
+@keyframes typewriter-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .benefit-shimmer,
-  .animate-benefit-shine {
+  .animate-benefit-shine,
+  .logo-shine,
+  .typewriter-caret {
     animation: none !important;
+  }
+
+  .logo-shine {
+    background: none;
+    color: #a8645c;
+    -webkit-background-clip: unset;
+    background-clip: unset;
   }
 }

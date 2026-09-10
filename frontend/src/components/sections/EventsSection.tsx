@@ -14,7 +14,7 @@ function UpcomingCard({
   onParticipate: () => void;
 }) {
   return (
-    <article className="relative overflow-hidden rounded-[1.5rem] border border-cream/15 bg-cream/[0.07] p-6 backdrop-blur-sm sm:p-7">
+    <article className="relative overflow-hidden rounded-[1.5rem] border border-cream/15 bg-cream/[0.07] p-5 backdrop-blur-sm sm:p-6">
       <div
         className="absolute right-0 top-0 h-28 w-28 translate-x-8 -translate-y-8 rounded-full bg-primary-gold/15 blur-2xl"
         aria-hidden
@@ -24,17 +24,23 @@ function UpcomingCard({
         {event.title}
       </h3>
       {event.description ? (
-        <p className="relative mt-3 text-sm leading-relaxed text-cream/70">{event.description}</p>
+        <p className="relative mt-3 text-sm leading-relaxed text-cream/70">
+          {event.description}
+        </p>
       ) : null}
 
-      <dl className="relative mt-5 space-y-3">
+      <dl className="relative mt-4 space-y-2.5">
         <div className="flex items-start gap-3">
           <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/20 text-primary-gold">
             <CalendarDays className="h-4 w-4" />
           </span>
           <div>
-            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Data</dt>
-            <dd className="mt-0.5 text-sm font-medium text-cream sm:text-base">{event.date}</dd>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">
+              Data
+            </dt>
+            <dd className="mt-0.5 text-sm font-medium text-cream sm:text-base">
+              {event.date}
+            </dd>
           </div>
         </div>
         <div className="flex items-start gap-3">
@@ -42,8 +48,12 @@ function UpcomingCard({
             <Clock className="h-4 w-4" />
           </span>
           <div>
-            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Hora</dt>
-            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">{event.time}</dd>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">
+              Hora
+            </dt>
+            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">
+              {event.time}
+            </dd>
           </div>
         </div>
         <div className="flex items-start gap-3">
@@ -51,8 +61,12 @@ function UpcomingCard({
             <MapPin className="h-4 w-4" />
           </span>
           <div>
-            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">Local</dt>
-            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">{event.location}</dd>
+            <dt className="text-[10px] font-bold uppercase tracking-widest text-bronze">
+              Local
+            </dt>
+            <dd className="mt-0.5 text-sm text-cream/90 sm:text-base">
+              {event.location}
+            </dd>
           </div>
         </div>
       </dl>
@@ -60,7 +74,7 @@ function UpcomingCard({
       <button
         type="button"
         onClick={onParticipate}
-        className="relative mt-6 inline-flex w-full items-center justify-center rounded-full bg-primary-gold px-5 py-3 text-sm font-bold text-burgundy shadow-[0_8px_28px_rgba(212,175,55,0.28)] transition-all hover:bg-[#e0c04a]"
+        className="relative mt-5 inline-flex w-full items-center justify-center rounded-full bg-primary-gold px-5 py-2.5 text-sm font-bold text-dark-brown shadow-[0_8px_28px_rgba(212,175,55,0.28)] transition-all hover:bg-[#e0c04a]"
       >
         Quero Participar
       </button>
@@ -77,7 +91,8 @@ export default function EventsSection() {
   return (
     <section
       id="eventos"
-      className="relative overflow-hidden bg-burgundy px-4 py-16 text-cream md:py-24"
+      className="relative flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center overflow-hidden bg-dark-brown px-4 py-12 text-cream md:py-16"
+      style={{ scrollMarginTop: 'var(--header-h)' }}
       aria-labelledby="eventos-destaque"
     >
       <div
@@ -95,16 +110,16 @@ export default function EventsSection() {
 
       <div className="container-max relative mx-auto max-w-5xl">
         <div className="text-center md:text-left">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-bronze">
-            Agenda 3V
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-bronze">
+            Agenda da 3V
           </p>
           <h2
             id="eventos-destaque"
-            className="font-display text-4xl font-bold leading-tight text-cream md:text-5xl"
+            className="font-display text-3xl font-bold leading-tight text-cream md:text-4xl"
           >
             Próximos Eventos
           </h2>
-          <div className="mx-auto mt-5 h-1 w-16 bg-bronze md:mx-0" />
+          <div className="mx-auto mt-4 h-1 w-16 bg-bronze md:mx-0" />
         </div>
 
         {isEmpty ? (
@@ -113,8 +128,8 @@ export default function EventsSection() {
               Ainda não há eventos previstos
             </p>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-cream/75 md:text-base">
-              A agenda será actualizada em breve. Podes consultar os eventos passados ou voltar mais
-              tarde para novidades.
+              A agenda será actualizada em breve. Podes consultar os eventos
+              passados ou voltar mais tarde para novidades.
             </p>
             <button
               type="button"
@@ -127,7 +142,7 @@ export default function EventsSection() {
         ) : (
           <>
             <div
-              className={`mt-10 grid gap-5 ${preview.length > 1 ? 'md:grid-cols-2' : 'md:max-w-xl'}`}
+              className={`mt-8 grid gap-5 ${preview.length > 1 ? 'md:grid-cols-2' : 'md:max-w-xl'}`}
             >
               {preview.map((event) => (
                 <UpcomingCard
@@ -138,7 +153,7 @@ export default function EventsSection() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col items-center justify-between gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
               {hasMore ? (
                 <button
                   type="button"

@@ -45,7 +45,7 @@ export default function FeaturedPrograms() {
   return (
     <section
       id="beneficios"
-      className="relative overflow-hidden bg-burgundy px-4 py-16 text-cream md:py-20"
+      className="relative overflow-hidden bg-terracotta px-4 pb-16 pt-10 text-cream md:pb-20 md:pt-12"
       aria-labelledby="beneficios-title"
     >
       <div
@@ -58,15 +58,15 @@ export default function FeaturedPrograms() {
       />
 
       <div className="container-max relative">
-        <div className="mb-12 max-w-3xl md:mb-16">
+        <div className="mb-10 max-w-3xl md:mb-12">
           <h2
             id="beneficios-title"
             className="whitespace-nowrap font-display text-[clamp(1.05rem,3.6vw,2.75rem)] font-bold text-cream"
           >
             Vantagens de Ser Membro Integral da 3V
           </h2>
-          <div className="mt-5 h-1 w-20 bg-bronze" />
-          <p className="mt-6 text-base leading-relaxed text-cream/80 md:text-lg">
+          <div className="mt-5 h-1 w-20 bg-primary-gold" />
+          <p className="mt-6 text-base leading-relaxed text-cream/90 md:text-lg">
             Sete direitos concretos para quem faz parte da comunidade
           </p>
         </div>
@@ -104,8 +104,8 @@ export default function FeaturedPrograms() {
                   <span
                     className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors ${
                       isActive
-                        ? 'bg-primary-gold text-burgundy shadow-[0_0_20px_rgba(212,175,55,0.65)]'
-                        : 'bg-bronze/20 text-bronze group-hover:bg-bronze group-hover:text-burgundy'
+                        ? 'bg-primary-gold text-terracotta shadow-[0_0_20px_rgba(212,175,55,0.65)]'
+                        : 'bg-bronze/20 text-bronze group-hover:bg-bronze group-hover:text-terracotta'
                     }`}
                   >
                     <Icon className="h-5 w-5" />
@@ -119,7 +119,7 @@ export default function FeaturedPrograms() {
                   {benefit.title}
                 </h3>
                 <p
-                  className={`relative leading-relaxed text-cream/70 ${
+                  className={`relative leading-relaxed text-cream/85 ${
                     featured ? 'max-w-md text-base' : 'text-sm'
                   }`}
                 >
