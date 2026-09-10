@@ -46,6 +46,7 @@ export default function FeaturedPrograms() {
     <section
       id="beneficios"
       className="relative overflow-hidden bg-terracotta px-4 pb-16 pt-10 text-cream md:pb-20 md:pt-12"
+      style={{ scrollMarginTop: 'var(--header-h)' }}
       aria-labelledby="beneficios-title"
     >
       <div

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { EventGalleryItem } from '@/data/events';
 import { contactInfo } from '@/data/contact';
+import ZoomImage from '@/components/ui/ZoomImage';
 
 type Slot = 'left' | 'center' | 'right';
 
@@ -93,12 +94,20 @@ function MediaTile({
           aria-label={item.alt}
           tabIndex={isCenter ? 0 : -1}
         />
+      ) : isCenter ? (
+        <ZoomImage
+          src={item.src!}
+          alt={item.alt ?? 'Foto do evento'}
+          className="h-full w-full object-cover"
+          loading={active ? 'eager' : 'lazy'}
+          draggable={false}
+        />
       ) : (
         <img
           src={item.src}
-          alt={isCenter ? item.alt : ''}
+          alt=""
           className="h-full w-full object-cover"
-          loading={active && isCenter ? 'eager' : 'lazy'}
+          loading="lazy"
           draggable={false}
         />
       )}

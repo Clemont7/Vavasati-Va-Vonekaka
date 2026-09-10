@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import heroImage from '@/assets/3V_brand_book/img1.jpeg';
 import { siteContent } from '@/data/siteContent';
 import { useJoinForm } from '@/context/JoinFormContext';
+import ZoomImage from '@/components/ui/ZoomImage';
 
 const TYPE_MS = 55;
 const HOLD_MS = 10_000;
@@ -107,7 +108,7 @@ export default function HeroSection() {
         <div className="relative mx-auto flex min-h-0 w-full max-w-md items-center justify-center self-stretch pb-8 sm:pb-9 md:max-w-none md:pb-10">
           <div className="relative h-full min-h-[42svh] w-full md:min-h-0">
             <div className="flex h-full items-center justify-center overflow-hidden rounded-2xl border-4 border-white bg-[#f7f0e8] shadow-2xl rotate-1 md:rotate-2">
-              <img
+              <ZoomImage
                 src={heroImage}
                 alt="Mulheres da comunidade 3V"
                 className="h-full w-full origin-center object-contain"

@@ -6,6 +6,7 @@ import {
   oportunizaWhatsAppChannel,
   type Opportunity,
 } from '@/data/opportunities';
+import ZoomImage from '@/components/ui/ZoomImage';
 
 type Filter = 'Todas' | Opportunity['type'];
 
@@ -28,9 +29,10 @@ function OpportunityCard({ item }: { item: Opportunity }) {
             aria-hidden
           />
         ) : (
-          <img
-            src={item.image}
+          <ZoomImage
+            src={item.image!}
             alt=""
+            caption={item.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => setImgFailed(true)}
           />
