@@ -1,7 +1,7 @@
 import { BookOpen, Compass, Eye, Globe2 } from 'lucide-react';
 import { siteContent } from '@/data/siteContent';
 import InternationalFlags from '@/components/sections/InternationalFlags';
-import quemSomos from '@/assets/quem_somos_cortado.jpg';
+import quemSomos from '@/assets/quem_somos_cortado.jpeg';
 
 const highlights = [
   { text: siteContent.highlights[0], Icon: BookOpen },

@@ -41,6 +41,7 @@ export default {
         'pulse-soft': 'pulse-soft 2.5s ease-in-out infinite',
         'panel-in': 'panel-in 0.28s ease-out',
         'modal-in': 'modal-in 0.28s ease-out',
+        'poster-in': 'poster-in 0.4s ease-out',
         'benefit-shine': 'benefit-shine 1.8s ease-in-out',
       },
       keyframes: {
@@ -59,6 +60,10 @@ export default {
         'modal-in': {
           '0%': { transform: 'scale(0.96)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'poster-in': {
+          '0%': { transform: 'translateX(var(--poster-from, 24px))', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
         'benefit-shine': {
           '0%': {
