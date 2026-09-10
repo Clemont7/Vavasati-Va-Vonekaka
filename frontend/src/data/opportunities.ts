@@ -175,7 +175,7 @@ export const opportunities: Opportunity[] = [
   },
 ];
 
-export const oportunizaWhatsAppChannel = 'https://whatsapp.com/channel/oportuniza-mz-exemplo';
+export const oportunizaWhatsAppChannel = 'https://whatsapp.com/channel/0029VbCWEFZ0rGiPNAF8yW19';
 
 /** Quantos cartões mostrar na secção Oportuniza da home */
 export const HOME_OPPORTUNITIES_LIMIT = 9;

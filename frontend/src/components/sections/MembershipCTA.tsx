@@ -12,8 +12,8 @@ export default function MembershipCTA() {
     >
       <div className="container-max flex flex-col items-center text-center">
         <p className="mb-10 max-w-xl text-stone-600">
-          {siteContent.audience} A tua voz conta — e acreditamos que ela pode melhorar o futuro da
-          juventude moçambicana.
+          {siteContent.audience} A tua voz conta — e acreditamos que ela pode
+          melhorar o futuro da juventude moçambicana.
         </p>
 
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end sm:gap-10">
@@ -21,14 +21,14 @@ export default function MembershipCTA() {
             <button
               type="button"
               onClick={() => open('membro')}
-              className="relative z-10 flex h-40 w-40 items-center justify-center rounded-full bg-burgundy p-6 text-center font-display text-lg font-bold text-white shadow-2xl transition-transform hover:scale-105"
+              className="relative z-10 flex h-40 w-40 items-center justify-center rounded-full bg-terracotta p-6 text-center font-display text-lg font-bold text-white shadow-2xl transition-transform hover:scale-105"
             >
               Tornar-se
               <br />
               Membro
             </button>
             <div
-              className="absolute inset-0 animate-pulse-soft rounded-full bg-burgundy"
+              className="absolute inset-0 animate-pulse-soft rounded-full bg-terracotta"
               aria-hidden
             />
           </div>
@@ -37,7 +37,7 @@ export default function MembershipCTA() {
             <button
               type="button"
               onClick={() => open('patrocinador')}
-              className="relative z-10 flex h-36 w-36 items-center justify-center rounded-full bg-primary-gold p-5 text-center font-display text-base font-bold text-burgundy shadow-[0_12px_36px_rgba(212,175,55,0.4)] transition-transform hover:scale-105 hover:bg-[#e0c04a] sm:h-40 sm:w-40 sm:text-lg"
+              className="relative z-10 flex h-36 w-36 items-center justify-center rounded-full bg-primary-gold p-5 text-center font-display text-base font-bold text-terracotta shadow-[0_12px_36px_rgba(212,175,55,0.4)] transition-transform hover:scale-105 hover:bg-[#e0c04a] sm:h-40 sm:w-40 sm:text-lg"
             >
               Tornar-se
               <br />

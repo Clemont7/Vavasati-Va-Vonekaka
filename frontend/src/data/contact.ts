@@ -9,24 +9,14 @@ export const contactInfo = {
   location: 'Maputo, Moçambique',
   socials: [
     {
-      id: 'instagram',
-      label: 'Instagram',
-      href: 'https://www.instagram.com/vavasati_va_vonekaka/',
-    },
-    {
       id: 'linkedin',
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/vavasati-va-vonekaka-13a02941a/',
     },
     {
-      id: 'facebook',
-      label: 'Facebook',
-      href: 'https://facebook.com/vavasativavonekaka',
-    },
-    {
-      id: 'youtube',
-      label: 'YouTube',
-      href: 'https://youtube.com/@vavasativavonekaka',
+      id: 'instagram',
+      label: 'Instagram',
+      href: 'https://www.instagram.com/vavasati_va_vonekaka/',
     },
   ],
   joinFormMailtoSubject: 'Manifestação de interesse — Torna-te Membro 3V',

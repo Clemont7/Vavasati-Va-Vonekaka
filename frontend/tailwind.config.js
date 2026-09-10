@@ -4,26 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
+        /* Paleta oficial do brand book — Vavasati va vonekaka */
+        gold: '#D4AF37',
+        terracotta: '#A8645C',
+        'dark-brown': '#3D1C02',
+        beige: '#E8E1D3',
+        /* Neutro de fundo (fora da paleta oficial, para legibilidade) */
+        cream: '#FFF9F5',
         primary: {
           gold: '#D4AF37',
           terracotta: '#A8645C',
           'dark-brown': '#3D1C02',
           beige: '#E8E1D3',
         },
-        burgundy: '#5A0D1B',
-        terracotta: '#8A4B32',
-        bronze: '#B08A57',
-        cream: '#FFF9F5',
-        beige: '#F5F1E8',
-        'dark-brown': '#3B2618',
-        ivory: '#FAF8F4',
-        sand: '#EADCC8',
+        /* Aliases legados → apontam para a paleta oficial */
+        bronze: '#D4AF37',
+        burgundy: '#3D1C02',
+        ivory: '#FFF9F5',
+        sand: '#E8E1D3',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        body: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
+        display: ['"Playfair Display"', 'Cinzel', 'serif'],
+        body: ['Montserrat', '"Open Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Cinzel', 'serif'],
+        sans: ['Montserrat', '"Open Sans"', 'system-ui', 'sans-serif'],
       },
       spacing: {
         gutter: '24px',
@@ -58,16 +62,16 @@ export default {
         },
         'benefit-shine': {
           '0%': {
-            boxShadow: '0 0 0 0 rgba(176, 138, 87, 0)',
+            boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)',
             borderColor: 'rgba(255, 249, 245, 0.15)',
           },
           '35%': {
             boxShadow:
-              '0 0 28px 4px rgba(212, 175, 55, 0.55), 0 0 60px 12px rgba(176, 138, 87, 0.35)',
+              '0 0 28px 4px rgba(212, 175, 55, 0.55), 0 0 60px 12px rgba(168, 100, 92, 0.35)',
             borderColor: 'rgba(212, 175, 55, 0.95)',
           },
           '100%': {
-            boxShadow: '0 0 0 0 rgba(176, 138, 87, 0)',
+            boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)',
             borderColor: 'rgba(255, 249, 245, 0.15)',
           },
         },

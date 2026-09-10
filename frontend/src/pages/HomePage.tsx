@@ -5,7 +5,7 @@ import FeaturedPrograms from '@/components/sections/FeaturedPrograms';
 import OportunizaPreview from '@/components/sections/OportunizaPreview';
 import PastEventsGallerySection from '@/components/sections/PastEventsGallerySection';
 import EventsSection from '@/components/sections/EventsSection';
-import FounderQuoteSection from '@/components/sections/FounderQuoteSection';
+import FoundersSection from '@/components/sections/FoundersSection';
 import MembershipCTA from '@/components/sections/MembershipCTA';
 
 export default function HomePage() {
@@ -22,10 +22,10 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <FeaturedPrograms />
+      <FoundersSection />
       <OportunizaPreview />
       <EventsSection />
       <PastEventsGallerySection />
-      <FounderQuoteSection />
       <MembershipCTA />
     </>
   );

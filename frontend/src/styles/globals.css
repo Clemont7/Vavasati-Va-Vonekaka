@@ -4,9 +4,12 @@
 
 @layer base {
   :root {
-    --color-burgundy: #5a0d1b;
-    --color-terracotta: #8a4b32;
-    --color-bronze: #b08a57;
+    /* Paleta oficial do brand book */
+    --color-gold: #d4af37;
+    --color-terracotta: #a8645c;
+    --color-dark-brown: #3d1c02;
+    --color-beige: #e8e1d3;
+    --color-bronze: #d4af37;
     --color-cream: #fff9f5;
     --header-h: 4.5rem;
   }
@@ -165,7 +168,11 @@
     }
 
     .side-panel-scroll::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #c49a68 0%, var(--color-terracotta) 100%);
+      background: linear-gradient(
+        180deg,
+        #c49a68 0%,
+        var(--color-terracotta) 100%
+      );
       border: 2px solid var(--color-cream);
       background-clip: padding-box;
     }
@@ -190,7 +197,7 @@
   }
 
   .nav-link-active {
-    @apply text-burgundy;
+    @apply text-terracotta;
     box-shadow: inset 0 -2px 0 0 currentColor;
   }
 }
@@ -208,13 +215,13 @@
   .logo-shine {
     background-image: linear-gradient(
       110deg,
-      #8a4b32 0%,
-      #8a4b32 38%,
+      #a8645c 0%,
+      #a8645c 38%,
       #d4af37 48%,
       #fff9f5 50%,
       #d4af37 52%,
-      #8a4b32 62%,
-      #8a4b32 100%
+      #a8645c 62%,
+      #a8645c 100%
     );
     background-size: 220% 100%;
     background-clip: text;
@@ -278,7 +285,7 @@
 
   .logo-shine {
     background: none;
-    color: #8a4b32;
+    color: #a8645c;
     -webkit-background-clip: unset;
     background-clip: unset;
   }

@@ -10,7 +10,7 @@ import {
 type Filter = 'Todas' | Opportunity['type'];
 
 const typeBadge: Record<Opportunity['typeColor'], string> = {
-  red: 'bg-burgundy',
+  red: 'bg-terracotta',
   emerald: 'bg-terracotta',
   amber: 'bg-bronze',
   blue: 'bg-dark-brown',
@@ -24,7 +24,7 @@ function OpportunityCard({ item }: { item: Opportunity }) {
       <div className="relative h-48 overflow-hidden">
         {imgFailed ? (
           <div
-            className="h-full w-full bg-gradient-to-br from-dark-brown via-burgundy to-bronze"
+            className="h-full w-full bg-gradient-to-br from-dark-brown via-terracotta to-bronze"
             aria-hidden
           />
         ) : (
@@ -42,19 +42,23 @@ function OpportunityCard({ item }: { item: Opportunity }) {
         </span>
       </div>
       <div className="p-6">
-        <h3 className="mb-1 font-display text-lg font-bold text-burgundy">{item.title}</h3>
+        <h3 className="mb-1 font-display text-lg font-bold text-terracotta">
+          {item.title}
+        </h3>
         <p className="mb-4 flex items-center gap-1 text-xs text-stone-500">
           <MapPin className="h-3 w-3" />
           {item.location}
         </p>
-        <p className="mb-6 line-clamp-3 text-sm text-stone-600">{item.summary}</p>
+        <p className="mb-6 line-clamp-3 text-sm text-stone-600">
+          {item.summary}
+        </p>
         <div className="flex items-center justify-between border-t border-stone-100 pt-4">
           <span className="text-xs text-stone-400">{item.expiresIn}</span>
           <a
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-bronze/40 text-burgundy transition-colors hover:bg-burgundy hover:text-cream"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-bronze/40 text-terracotta transition-colors hover:bg-terracotta hover:text-cream"
             aria-label={`Abrir ${item.title} numa nova aba`}
           >
             <ArrowUpRight className="h-4 w-4" />
@@ -75,7 +79,9 @@ export default function OportunizaPreview() {
 
   const visible = useMemo(() => {
     const list =
-      filter === 'Todas' ? opportunities : opportunities.filter((item) => item.type === filter);
+      filter === 'Todas'
+        ? opportunities
+        : opportunities.filter((item) => item.type === filter);
     return list.slice(0, HOME_OPPORTUNITIES_LIMIT);
   }, [filter]);
 
@@ -87,7 +93,7 @@ export default function OportunizaPreview() {
     >
       <div className="container-max mb-8 flex flex-col items-start justify-between gap-4 md:mb-10 md:flex-row md:items-end">
         <div className="text-left">
-          <h2 className="font-display text-4xl font-bold uppercase tracking-tight text-burgundy">
+          <h2 className="font-display text-4xl font-bold uppercase tracking-tight text-terracotta">
             OPORTUNIZA
           </h2>
           <p className="mt-2 text-stone-500">
@@ -98,7 +104,7 @@ export default function OportunizaPreview() {
           href={oportunizaWhatsAppChannel}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 font-semibold text-burgundy transition-transform hover:translate-x-1"
+          className="flex items-center gap-2 font-semibold text-terracotta transition-transform hover:translate-x-1"
         >
           Ver todas as oportunidades
           <ArrowRight className="h-4 w-4" />
@@ -115,7 +121,7 @@ export default function OportunizaPreview() {
               onClick={() => setFilter(option)}
               className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
                 active
-                  ? 'bg-burgundy text-cream'
+                  ? 'bg-terracotta text-cream'
                   : 'border border-sand bg-cream text-dark-brown hover:border-bronze'
               }`}
             >

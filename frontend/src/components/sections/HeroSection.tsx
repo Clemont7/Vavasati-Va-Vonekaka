@@ -54,7 +54,9 @@ function TypewriterSlogan({ text }: { text: string }) {
       </span>
       <span className="absolute inset-0" aria-live="polite">
         {shown}
-        {reducedMotion ? null : <span className="typewriter-caret" aria-hidden />}
+        {reducedMotion ? null : (
+          <span className="typewriter-caret" aria-hidden />
+        )}
       </span>
     </p>
   );
@@ -64,7 +66,9 @@ export default function HeroSection() {
   const { open: openJoinForm } = useJoinForm();
 
   function scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (
@@ -75,16 +79,18 @@ export default function HeroSection() {
     >
       <div className="container-max grid h-full min-h-0 grid-rows-[auto_minmax(0,1.35fr)] items-center gap-2 sm:gap-3 md:grid-cols-2 md:grid-rows-1 md:gap-8 lg:gap-12">
         <div className="flex min-h-0 flex-col justify-center space-y-3 sm:space-y-4 md:space-y-5">
-          <h1 className="font-display text-[clamp(1.65rem,5vw,3.25rem)] font-bold leading-[1.08] text-burgundy">
+          <h1 className="font-display text-[clamp(1.65rem,5vw,3.25rem)] font-bold leading-[1.08] text-terracotta">
             Mulheres que <br />
-            <span className="logo-shine font-playfair-italic">Resplandecem</span>
+            <span className="logo-shine font-playfair-italic">
+              Resplandecem
+            </span>
           </h1>
           <TypewriterSlogan text={siteContent.heroSubtitle} />
           <div className="flex flex-wrap gap-2.5 sm:gap-3">
             <button
               type="button"
-              onClick={openJoinForm}
-              className="rounded-full bg-burgundy px-4 py-2 text-xs font-medium text-white shadow-lg transition-all hover:bg-burgundy/90 sm:px-5 sm:py-2.5 sm:text-sm md:px-7 md:py-3 md:text-base"
+              onClick={() => openJoinForm()}
+              className="rounded-full bg-dark-brown px-4 py-2 text-xs font-medium text-cream shadow-lg transition-all hover:bg-dark-brown/90 sm:px-5 sm:py-2.5 sm:text-sm md:px-7 md:py-3 md:text-base"
             >
               Tornar-se Membro
             </button>
@@ -109,7 +115,7 @@ export default function HeroSection() {
               />
             </div>
             <div className="absolute bottom-0 left-3 z-10 flex aspect-square w-[5.75rem] translate-y-[55%] flex-col items-center justify-center rounded-2xl border border-stone-200 bg-white p-2 shadow-xl sm:left-4 sm:w-24 md:left-5 md:w-28">
-              <p className="font-display text-2xl font-bold leading-none text-burgundy sm:text-3xl md:text-4xl">
+              <p className="font-display text-2xl font-bold leading-none text-terracotta sm:text-3xl md:text-4xl">
                 {siteContent.impactBadge.count}
               </p>
               <p className="mt-1 text-center text-[10px] font-semibold uppercase tracking-wide text-stone-500 sm:text-xs">

@@ -1,10 +1,74 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { Calendar, Mail, MapPin, MessageCircle, X } from 'lucide-react';
-import { events, pastEvents, upcomingEvents } from '@/data/events';
+import {
+  Calendar,
+  ChevronDown,
+  Mail,
+  MapPin,
+  MessageCircle,
+  X,
+} from 'lucide-react';
+import {
+  events,
+  pastEvents,
+  upcomingEvents,
+  type EventItem,
+} from '@/data/events';
 import { contactInfo, getWhatsAppUrl } from '@/data/contact';
 import { useEventsPanel } from '@/context/EventsPanelContext';
 import { useJoinForm } from '@/context/JoinFormContext';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import EventMediaCarousel from '@/components/sections/EventMediaCarousel';
+
+function PastEventItem({ event }: { event: EventItem }) {
+  const [open, setOpen] = useState(false);
+  const hasGallery = Boolean(event.gallery?.length);
+
+  return (
+    <li className="overflow-hidden rounded-xl border border-dashed border-stone-200 bg-white/70">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-start justify-between gap-3 p-4 text-left"
+      >
+        <span className="min-w-0">
+          <span className="block font-display text-lg font-bold text-terracotta">
+            {event.title}
+          </span>
+          <span className="mt-2 flex items-center gap-2 text-sm text-stone-500">
+            <Calendar className="h-4 w-4 shrink-0 text-bronze" />
+            {event.date}
+          </span>
+          <span className="mt-1 flex items-center gap-2 text-sm text-stone-500">
+            <MapPin className="h-4 w-4 shrink-0 text-bronze" />
+            {event.location}
+          </span>
+          <span className="mt-3 block text-sm leading-relaxed text-stone-600">
+            {event.description}
+          </span>
+        </span>
+        <ChevronDown
+          className={`mt-1 h-5 w-5 shrink-0 text-bronze transition-transform ${
+            open ? 'rotate-180' : ''
+          }`}
+          aria-hidden
+        />
+      </button>
+
+      {open ? (
+        hasGallery ? (
+          <div className="border-t border-stone-200 bg-dark-brown px-1 py-5">
+            <EventMediaCarousel items={event.gallery!} />
+          </div>
+        ) : (
+          <p className="border-t border-stone-200 px-4 py-4 text-sm text-stone-500">
+            Sem fotos ou vídeos para este evento.
+          </p>
+        )
+      ) : null}
+    </li>
+  );
+}
 
 function EventCard({
   event,
@@ -28,7 +92,9 @@ function EventCard({
           : 'rounded-2xl border border-stone-200 bg-white p-4 shadow-sm'
       }
     >
-      <p className="font-display text-lg font-bold text-burgundy">{event.title}</p>
+      <p className="font-display text-lg font-bold text-terracotta">
+        {event.title}
+      </p>
       <p className="mt-2 flex items-center gap-2 text-sm text-stone-500">
         <Calendar className="h-4 w-4 shrink-0 text-bronze" />
         {event.date}
@@ -38,12 +104,14 @@ function EventCard({
         <MapPin className="h-4 w-4 shrink-0 text-bronze" />
         {event.location}
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-stone-600">{event.description}</p>
+      <p className="mt-3 text-sm leading-relaxed text-stone-600">
+        {event.description}
+      </p>
       {onParticipate ? (
         <button
           type="button"
           onClick={onParticipate}
-          className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-burgundy px-4 py-2.5 text-sm font-bold text-white hover:bg-burgundy/90"
+          className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-terracotta px-4 py-2.5 text-sm font-bold text-white hover:bg-terracotta/90"
         >
           Quero participar
         </button>
@@ -52,7 +120,7 @@ function EventCard({
         <button
           type="button"
           onClick={onViewGallery}
-          className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-burgundy/20 bg-white px-4 py-2.5 text-sm font-bold text-burgundy hover:bg-burgundy/5"
+          className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-terracotta/20 bg-white px-4 py-2.5 text-sm font-bold text-terracotta hover:bg-terracotta/5"
         >
           Ver galeria
         </button>
@@ -122,13 +190,15 @@ function ParticipateForm({
       <button
         type="button"
         onClick={onBack}
-        className="text-sm font-semibold text-bronze hover:text-burgundy"
+        className="text-sm font-semibold text-bronze hover:text-terracotta"
       >
         ← Voltar à agenda
       </button>
 
       <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
-        <p className="font-display text-xl font-bold text-burgundy">{event.title}</p>
+        <p className="font-display text-xl font-bold text-terracotta">
+          {event.title}
+        </p>
         <p className="mt-2 text-sm text-stone-500">
           {event.date} · {event.time}
         </p>
@@ -137,14 +207,16 @@ function ParticipateForm({
 
       {sentVia ? (
         <div className="rounded-2xl border border-bronze/30 bg-bronze/5 px-4 py-6 text-center">
-          <p className="font-display text-lg font-bold text-burgundy">Mensagem preparada</p>
+          <p className="font-display text-lg font-bold text-terracotta">
+            Mensagem preparada
+          </p>
           <p className="mt-2 text-sm leading-relaxed text-stone-600">
             {sentVia === 'email'
               ? 'O teu cliente de e-mail deve abrir com a mensagem pronta. Se não abrir, escreve para '
               : 'O WhatsApp deve abrir com a mensagem pronta. Se não abrir, contacta a 3V por e-mail em '}
             <a
               href={`mailto:${contactInfo.email}`}
-              className="font-medium text-burgundy underline-offset-2 hover:underline"
+              className="font-medium text-terracotta underline-offset-2 hover:underline"
             >
               {contactInfo.email}
             </a>
@@ -154,7 +226,8 @@ function ParticipateForm({
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <p className="text-sm leading-relaxed text-stone-600">
-            Preenche os teus dados e escolhe como preferes enviar a mensagem pronta à equipa 3V.
+            Preenche os teus dados e escolhe como preferes enviar a mensagem
+            pronta à equipa 3V.
           </p>
           <label className="block">
             <span className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-bronze">
@@ -165,7 +238,7 @@ function ParticipateForm({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-burgundy outline-none ring-bronze/30 focus:ring-2"
+              className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-terracotta outline-none ring-bronze/30 focus:ring-2"
               placeholder="O teu nome"
               autoComplete="name"
             />
@@ -173,37 +246,44 @@ function ParticipateForm({
           <label className="block">
             <span className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-bronze">
               E-mail ou telefone{' '}
-              <span className="font-normal normal-case tracking-normal">(opcional)</span>
+              <span className="font-normal normal-case tracking-normal">
+                (opcional)
+              </span>
             </span>
             <input
               type="text"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
-              className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-burgundy outline-none ring-bronze/30 focus:ring-2"
+              className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-terracotta outline-none ring-bronze/30 focus:ring-2"
               placeholder="Para a 3V te contactar"
               autoComplete="email"
             />
           </label>
           <label className="block">
             <span className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-bronze">
-              Mensagem <span className="font-normal normal-case tracking-normal">(opcional)</span>
+              Mensagem{' '}
+              <span className="font-normal normal-case tracking-normal">
+                (opcional)
+              </span>
             </span>
             <textarea
               value={note}
               onChange={(e) => setNote(e.target.value)}
               rows={3}
-              className="w-full resize-none rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-burgundy outline-none ring-bronze/30 focus:ring-2"
+              className="w-full resize-none rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-terracotta outline-none ring-bronze/30 focus:ring-2"
               placeholder="Algo que queiras partilhar?"
             />
           </label>
 
           <div className="space-y-2 pt-1">
-            <p className="text-xs font-bold uppercase tracking-wide text-bronze">Enviar via</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-bronze">
+              Enviar via
+            </p>
             <button
               type="button"
               disabled={!name.trim()}
               onClick={openEmail}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-burgundy px-4 py-3 text-sm font-bold text-white hover:bg-burgundy/90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-terracotta px-4 py-3 text-sm font-bold text-white hover:bg-terracotta/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Mail className="h-4 w-4" />
               E-mail
@@ -212,7 +292,7 @@ function ParticipateForm({
               type="button"
               disabled={!name.trim() || !whatsappReady}
               onClick={openWhatsApp}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-burgundy/20 bg-white px-4 py-3 text-sm font-bold text-burgundy hover:bg-burgundy/5 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-terracotta/20 bg-white px-4 py-3 text-sm font-bold text-terracotta hover:bg-terracotta/5 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp
@@ -234,7 +314,7 @@ function ParticipateForm({
             close();
             openJoin();
           }}
-          className="mt-2 text-sm font-bold text-burgundy underline-offset-2 hover:underline"
+          className="mt-2 text-sm font-bold text-terracotta underline-offset-2 hover:underline"
         >
           Tornar-se membro da 3V
         </button>
@@ -244,15 +324,9 @@ function ParticipateForm({
 }
 
 export default function EventsPanel() {
-  const { isOpen, view, eventId, close, openAgenda, openParticipate } = useEventsPanel();
+  const { isOpen, view, eventId, close, openAgenda, openParticipate } =
+    useEventsPanel();
   useBodyScrollLock(isOpen);
-
-  const scrollToGallery = () => {
-    close();
-    requestAnimationFrame(() => {
-      document.getElementById('galeria-eventos')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -274,10 +348,15 @@ export default function EventsPanel() {
         : 'Agenda';
 
   return (
-    <div className="fixed inset-0 z-[80]" role="dialog" aria-modal="true" aria-labelledby="events-panel-title">
+    <div
+      className="fixed inset-0 z-[80]"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="events-panel-title"
+    >
       <button
         type="button"
-        className="absolute inset-0 bg-burgundy/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-terracotta/40 backdrop-blur-sm"
         aria-label="Fechar painel de eventos"
         onClick={close}
       />
@@ -285,15 +364,20 @@ export default function EventsPanel() {
       <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-cream shadow-2xl animate-panel-in">
         <div className="flex items-center justify-between border-b border-stone-200 px-5 py-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-bronze">3V</p>
-            <h2 id="events-panel-title" className="font-display text-2xl font-bold text-burgundy">
+            <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
+              3V
+            </p>
+            <h2
+              id="events-panel-title"
+              className="font-display text-2xl font-bold text-terracotta"
+            >
               {title}
             </h2>
           </div>
           <button
             type="button"
             onClick={close}
-            className="rounded-full border border-stone-200 p-2 text-burgundy hover:bg-white"
+            className="rounded-full border border-stone-200 p-2 text-terracotta hover:bg-white"
             aria-label="Fechar"
           >
             <X className="h-5 w-5" />
@@ -313,8 +397,8 @@ export default function EventsPanel() {
                 </h3>
                 {upcomingEvents.length === 0 ? (
                   <p className="rounded-2xl border border-dashed border-stone-200 bg-white/80 px-4 py-6 text-sm leading-relaxed text-stone-600">
-                    Ainda não há eventos previstos. Assim que houver novidades na agenda, aparecem
-                    aqui.
+                    Ainda não há eventos previstos. Assim que houver novidades
+                    na agenda, aparecem aqui.
                   </p>
                 ) : (
                   <ul className="space-y-4">
@@ -334,16 +418,13 @@ export default function EventsPanel() {
                   Passados
                 </h3>
                 {pastEvents.length === 0 ? (
-                  <p className="text-sm text-stone-500">Ainda não há eventos passados registados.</p>
+                  <p className="text-sm text-stone-500">
+                    Ainda não há eventos passados registados.
+                  </p>
                 ) : (
                   <ul className="space-y-3">
                     {pastEvents.map((event) => (
-                      <EventCard
-                        key={event.id}
-                        event={event}
-                        variant="past"
-                        onViewGallery={event.gallery?.length ? scrollToGallery : undefined}
-                      />
+                      <PastEventItem key={event.id} event={event} />
                     ))}
                   </ul>
                 )}
@@ -353,6 +434,10 @@ export default function EventsPanel() {
 
           {view === 'passados' ? (
             <section>
+              <p className="mb-4 text-sm leading-relaxed text-stone-600">
+                Toca no título de um evento para expandir e ver as fotos e
+                vídeos.
+              </p>
               {pastEvents.length === 0 ? (
                 <p className="rounded-2xl border border-dashed border-stone-200 bg-white/80 px-4 py-6 text-sm leading-relaxed text-stone-600">
                   Ainda não há eventos passados para mostrar.
@@ -360,12 +445,7 @@ export default function EventsPanel() {
               ) : (
                 <ul className="space-y-3">
                   {pastEvents.map((event) => (
-                    <EventCard
-                      key={event.id}
-                      event={event}
-                      variant="past"
-                      onViewGallery={event.gallery?.length ? scrollToGallery : undefined}
-                    />
+                    <PastEventItem key={event.id} event={event} />
                   ))}
                 </ul>
               )}
