@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { flagUrl, internationalPresence } from '@/data/presence';
 
 export default function InternationalFlags() {
   const loop = [...internationalPresence, ...internationalPresence];
+  // Pausa a animação enquanto o utilizador arrasta/desliza, para não competir
+  // com o gesto; ao soltar, a faixa continua a rolar sozinha de onde ficou.
+  const [paused, setPaused] = useState(false);
+  const pause = () => setPaused(true);
+  const resume = () => setPaused(false);
 
   return (
     <div
@@ -12,8 +18,20 @@ export default function InternationalFlags() {
         <p className="mb-8 font-display text-2xl font-bold italic text-gold [text-shadow:0_2px_4px_rgba(61,28,2,0.9),0_0_16px_rgba(61,28,2,0.5)] md:text-3xl">
           Nossa Presença Internacional
         </p>
-        <div className="relative w-full overflow-hidden">
-          <div className="marquee-container flex animate-marquee items-center gap-16 px-8 md:gap-24">
+
+        <div
+          className="relative w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+          onTouchStart={pause}
+          onTouchEnd={resume}
+          onMouseDown={pause}
+          onMouseUp={resume}
+          onMouseLeave={resume}
+        >
+          <div
+            className={`marquee-container flex animate-marquee items-center gap-16 px-8 md:gap-24 ${
+              paused ? '[animation-play-state:paused]' : ''
+            }`}
+          >
             {loop.map((country, index) => (
               <img
                 key={`${country.code}-${index}`}

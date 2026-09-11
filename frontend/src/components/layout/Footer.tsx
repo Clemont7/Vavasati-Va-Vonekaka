@@ -82,9 +82,9 @@ export default function Footer() {
       </div>
 
       <div className="container-max mx-auto mt-14 flex max-w-3xl flex-col items-center justify-between gap-3 border-t border-stone-200/80 pt-8 text-[10px] font-medium uppercase tracking-widest text-stone-400 sm:flex-row">
-        <p>
-          © {new Date().getFullYear()} Vavasati Va Vonekaka. Todos os direitos
-          reservados.
+        <p className="text-center">
+          © {new Date().getFullYear()} Vavasati Va Vonekaka.
+          <br className="sm:hidden" /> Todos os direitos reservados.
         </p>
         <p className="inline-flex items-center gap-1.5">
           Feito com

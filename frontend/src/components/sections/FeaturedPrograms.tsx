@@ -62,7 +62,7 @@ export default function FeaturedPrograms() {
         <div className="mb-10 max-w-3xl md:mb-12">
           <h2
             id="beneficios-title"
-            className="whitespace-nowrap font-display text-[clamp(1.05rem,3.6vw,2.75rem)] font-bold text-cream"
+            className="font-display text-[clamp(1.6rem,4.5vw,2.75rem)] font-bold text-cream md:whitespace-nowrap"
           >
             Vantagens de Ser Membro Integral da 3V
           </h2>

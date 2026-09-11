@@ -1,4 +1,4 @@
-import { BookOpen, Compass, Eye, Globe2 } from 'lucide-react';
+import { BookOpen, Globe2, HandHeart, Lightbulb, Target } from 'lucide-react';
 import { siteContent } from '@/data/siteContent';
 import InternationalFlags from '@/components/sections/InternationalFlags';
 import quemSomos from '@/assets/quem_somos_cortado.jpeg';
@@ -7,6 +7,31 @@ const highlights = [
   { text: siteContent.highlights[0], Icon: BookOpen },
   { text: siteContent.highlights[1], Icon: Globe2 },
 ] as const;
+
+/** Frases a destacar em negrito dentro de `siteContent.meaning` */
+const MEANING_HIGHLIGHTS = [
+  'Vavasati Va Vonekaka',
+  'Mulheres Resplandecentes',
+  'Mulheres que Resplandecem',
+];
+
+/** Devolve o texto com as `highlights` (substrings exactas) em negrito */
+function withBold(text: string, highlights: string[]) {
+  if (highlights.length === 0) return text;
+  const pattern = new RegExp(
+    `(${highlights.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+    'g',
+  );
+  return text.split(pattern).map((part, i) =>
+    highlights.includes(part) ? (
+      <strong key={i} className="font-bold">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
 
 export default function AboutSection() {
   return (
@@ -19,7 +44,10 @@ export default function AboutSection() {
       {/* Imagem «Quem Somos?» — fundo de toda a secção, em cor original */}
       <div
         className="pointer-events-none absolute inset-0 bg-[length:100%_auto] bg-top bg-no-repeat"
-        style={{ backgroundImage: `url(${quemSomos})`, backgroundColor: '#d9c4ae' }}
+        style={{
+          backgroundImage: `url(${quemSomos})`,
+          backgroundColor: '#d9c4ae',
+        }}
         aria-hidden
       />
       {/* Só um esbatimento no fundo para a imagem fundir com a cor de base */}
@@ -28,9 +56,9 @@ export default function AboutSection() {
         aria-hidden
       />
 
-      <div className="relative px-4 pb-4 pt-[26vw] md:pb-6">
+      <div className="relative px-4 pb-4 pt-[69vw] md:pb-6 md:pt-[26vw]">
         <div className="container-max relative mx-auto max-w-5xl">
-          <div className="mx-auto max-w-3xl rounded-3xl border border-sand/70 bg-cream/85 px-6 py-8 text-center shadow-[0_16px_48px_rgba(61,28,2,0.14)] backdrop-blur-sm md:px-10 md:py-10">
+          <div className="mx-auto max-w-3xl rounded-3xl border border-sand/70 bg-cream/65 px-6 py-8 text-center shadow-[0_16px_48px_rgba(61,28,2,0.14)] backdrop-blur-md md:bg-cream/55 md:px-10 md:py-10">
             <figure className="relative">
               <span
                 className="font-display text-6xl leading-none text-bronze/50 md:text-7xl"
@@ -40,12 +68,12 @@ export default function AboutSection() {
               </span>
               <blockquote className="-mt-4">
                 <p className="font-display text-xl italic leading-relaxed text-terracotta md:text-2xl">
-                  {siteContent.meaning}
+                  {withBold(siteContent.meaning, MEANING_HIGHLIGHTS)}
                 </p>
               </blockquote>
             </figure>
 
-            <p className="mt-6 text-base leading-relaxed text-stone-600 md:text-lg">
+            <p className="mt-6 hyphens-auto text-justify text-base leading-relaxed text-stone-600 md:text-lg">
               {siteContent.description}
             </p>
           </div>
@@ -74,7 +102,7 @@ export default function AboutSection() {
               />
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/8 text-terracotta">
-                  <Compass className="h-4 w-4" />
+                  <Target className="h-4 w-4" />
                 </span>
                 <p className="font-display text-2xl font-bold text-terracotta">
                   Missão
@@ -92,7 +120,7 @@ export default function AboutSection() {
               />
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/8 text-terracotta">
-                  <Eye className="h-4 w-4" />
+                  <Lightbulb className="h-4 w-4" />
                 </span>
                 <p className="font-display text-2xl font-bold text-terracotta">
                   Visão
@@ -105,7 +133,10 @@ export default function AboutSection() {
           </div>
 
           <div className="mt-10 rounded-3xl border border-cream/25 bg-terracotta px-6 py-8 text-center md:px-10">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/90">
+            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-cream/15 text-primary-gold">
+              <HandHeart className="h-4 w-4" />
+            </span>
+            <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/90">
               Valores
             </p>
             <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">

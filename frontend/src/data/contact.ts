@@ -5,7 +5,7 @@ export const contactInfo = {
    * WhatsApp da gestora de redes (com código do país).
    * Ex.: '+258840000000' — deixar vazio até ter o número definitivo.
    */
-  whatsapp: '',
+  whatsapp: '+258846228350',
   location: 'Maputo, Moçambique',
   socials: [
     {
