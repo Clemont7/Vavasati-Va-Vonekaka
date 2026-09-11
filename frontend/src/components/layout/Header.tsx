@@ -61,7 +61,7 @@ export default function Header() {
             className="h-11 w-11 rounded-full border border-bronze object-cover shadow-sm"
             aria-hidden
           />
-          <span className="hidden font-display text-lg font-bold uppercase tracking-widest text-terracotta sm:block">
+          <span className="font-display text-[13px] font-bold uppercase leading-tight tracking-wide text-terracotta sm:text-lg sm:tracking-widest">
             Vavasati Va Vonekaka
           </span>
         </button>

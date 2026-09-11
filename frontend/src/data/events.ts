@@ -1,3 +1,4 @@
+import { getWhatsAppUrl } from './contact';
 import { primeiroEncontroMaputoGallery, type EventGalleryItem } from './eventGalleries';
 
 export type { EventGalleryItem };
@@ -43,3 +44,9 @@ export const pastEvents = events.filter((e) => e.status === 'passado');
 
 /** Quantos eventos próximos mostrar na home antes de «Ver mais» */
 export const HOME_UPCOMING_LIMIT = 2;
+
+/** Link do WhatsApp com mensagem pronta para participar num evento */
+export function getEventWhatsAppUrl(event: EventItem): string | null {
+  const message = `Olá 3V! Gostaria de participar no evento «${event.title}» (${event.date}).`;
+  return getWhatsAppUrl(message);
+}

@@ -1,18 +1,14 @@
 import { CalendarDays, Clock, MapPin } from 'lucide-react';
 import {
   HOME_UPCOMING_LIMIT,
+  getEventWhatsAppUrl,
   upcomingEvents,
   type EventItem,
 } from '@/data/events';
 import { useEventsPanel } from '@/context/EventsPanelContext';
 
-function UpcomingCard({
-  event,
-  onParticipate,
-}: {
-  event: EventItem;
-  onParticipate: () => void;
-}) {
+function UpcomingCard({ event }: { event: EventItem }) {
+  const whatsappUrl = getEventWhatsAppUrl(event);
   return (
     <article className="relative overflow-hidden rounded-[1.5rem] border border-cream/15 bg-cream/[0.07] p-5 backdrop-blur-sm sm:p-6">
       <div
@@ -71,19 +67,22 @@ function UpcomingCard({
         </div>
       </dl>
 
-      <button
-        type="button"
-        onClick={onParticipate}
-        className="relative mt-5 inline-flex w-full items-center justify-center rounded-full bg-primary-gold px-5 py-2.5 text-sm font-bold text-dark-brown shadow-[0_8px_28px_rgba(212,175,55,0.28)] transition-all hover:bg-[#e0c04a]"
-      >
-        Quero Participar
-      </button>
+      {whatsappUrl ? (
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative mt-5 inline-flex w-full items-center justify-center rounded-full bg-primary-gold px-5 py-2.5 text-sm font-bold text-dark-brown shadow-[0_8px_28px_rgba(212,175,55,0.28)] transition-all hover:bg-[#e0c04a]"
+        >
+          Quero Participar
+        </a>
+      ) : null}
     </article>
   );
 }
 
 export default function EventsSection() {
-  const { openAgenda, openPast, openParticipate } = useEventsPanel();
+  const { openAgenda, openPast } = useEventsPanel();
   const preview = upcomingEvents.slice(0, HOME_UPCOMING_LIMIT);
   const hasMore = upcomingEvents.length > HOME_UPCOMING_LIMIT;
   const isEmpty = upcomingEvents.length === 0;
@@ -145,11 +144,7 @@ export default function EventsSection() {
               className={`mt-8 grid gap-5 ${preview.length > 1 ? 'md:grid-cols-2' : 'md:max-w-xl'}`}
             >
               {preview.map((event) => (
-                <UpcomingCard
-                  key={event.id}
-                  event={event}
-                  onParticipate={() => openParticipate(event.id)}
-                />
+                <UpcomingCard key={event.id} event={event} />
               ))}
             </div>
 
